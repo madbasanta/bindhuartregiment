@@ -1,0 +1,57 @@
+.main-collab-form {
+    display: flex;
+    justify-content: space-evenly;
+}
+.wrapper-cform {
+    display: flex;
+    justify-content: center;
+}
+textarea{
+    height: 100px;
+    resize: none;
+    overflow: hidden;
+}
+.b_wrapper{
+    display: flex;
+    justify-content: center;
+}
+h1.collab_title {
+    color: white;
+    text-align: center;
+    font-family: 'Poppins';
+    font-weight: bold;
+    font-size: 40px;
+}
+p.collab_info {
+    color: white;
+    font-size: 15px;
+    font-family: 'Poppins';
+    text-align: justify;
+    width: 50%;
+    margin-left: 25%;
+    margin-top: 4%;
+
+}
+.collab_billboard {
+    margin: 7%;
+}
+@media only screen and (max-width: 500px){
+    .main-collab-form {
+        display: block;
+    }
+    .wrapper-cform {
+        display: block;
+    }
+    p.collab_info {
+        width: 75%;
+        margin-left: 12.5%;
+        font-size: 15px;
+    }
+    .collab_billboard {
+        margin: 3%;
+    }
+    h1.collab_title {
+        font-size: 30px;
+    }
+    
+}

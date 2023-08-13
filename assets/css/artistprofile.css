@@ -1,0 +1,247 @@
+.main_artist_billboard{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5%;
+}
+.main_artist_billboard h1{
+    font-family: 'Antigone';
+    font-size: 48px;
+    font-weight: bold;
+    color: white;
+}
+.artist_profile_image_billboard{
+    display: flex;
+    justify-content: center;
+}
+.artist_profile_body_info{
+    margin: 7%;
+}
+.artist_profile_body_info p{
+    font-family: 'Mazin';
+    font-size: 24px;
+    font-weight: lighter;
+    color: white;
+    text-align: justify;
+}
+.artist_image{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.artist_image_art_ryan{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.artist_image_art_jhapa1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.artist_title{
+    text-align: center;
+    margin: 2%;
+}
+.artist_title h1{
+    font-family: 'Mazin';
+    font-size: 26px;
+    font-weight: lighter;
+    color:white;
+
+}
+.artist_title h6{
+    font-family: 'Mazin';
+    font-size: 24px;
+    font-weight: lighter;
+    color: #6CA1F0;
+}
+.artist_info{
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+.artist_info p{
+    color: white;
+    font-family: 'Mazin';
+    font-size: 23px;
+    font-weight: lighter;
+    text-align: justify;
+}
+.artist_read_more_wrapper{
+    display: flex;
+    justify-content: center;
+    margin: 5%;
+
+}
+.readmart{
+    color: white;
+    text-decoration: underline;
+    font-family: 'Mazin';
+    font-weight: medium;
+    font-size: 24px;
+}
+.artist_content{
+    border-bottom: 2px solid  #FFE27D;
+    margin: 5%;
+}
+.line_by_artist{
+    display: flex;
+    justify-content: center;
+    margin: 10%;
+}
+.line_by_artist h1{
+    font-family: 'Antigone';
+    font-size: 40px;
+    font-weight: lighter;
+    color: white;
+}
+.artist_image_art{
+    display: flex;
+    justify-content: center;
+}
+.artist_image_momin_art{
+    display: flex;
+    justify-content: center;
+}
+.artist_image_mominup1_art{
+    display: flex;
+    justify-content: center;
+}
+.artist_image_sundarlama1{
+    display:flex;
+    justify-content: center;
+}
+.artist_image_sundarlama2{
+    display:flex;
+    justify-content: center;
+}
+.artistmain_content{
+    margin: 7%;
+}
+.artistmain_content p{
+    font-family: 'Mazin';
+    font-weight: lighter;
+    font-size: 22px;
+    color: white;
+    text-align: justify;
+}
+.artistmain_content_art{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.artistmain_content_art{
+    font-family: 'Mazin';
+    font-weight: lighter;
+    font-size: 22px;
+    color: white;
+    text-align: justify;
+    margin: 3%;
+    
+}
+.photo1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2%;
+
+}
+.photo1 p{
+    font-family: 'Mazin';
+    font-weight: lighter;
+    font-size: 17px;
+    color: white;
+    text-align: justify;
+
+}
+
+.artist_image_proj4{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.artist_image_proj4{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.event_img_proj4{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+@media only screen and (max-width: 500px){
+    .artist_profile_image_billboard img{
+        height: 250px;
+        width: 300px;
+    }
+    .artist_profile_body_info p{
+        font-size: 17px;
+    }
+    .artist_info p{
+        font-size: 16px;
+    }
+    .readmart{
+        font-size: 20px;
+    }
+    .artist_info{
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+    .line_by_artist h1{
+        font-size: 30px;
+    }
+    .artist_image_art img{
+        height: 200px;
+        width: 300px;
+    }
+  
+    .artist_image_art_ryan img{
+        height: 284px;
+        width:300px;
+    }
+    .artist_image_art_jhapa1 img{
+        height: 511px;
+        width:300px;
+    }
+    .artistmain_content p{
+        font-size: 17px;
+    }
+    .artist_image_momin_art img{
+        height: 400px;
+        width : 300px;
+    }
+    .artist_image_mominup1_art img{
+        height: 225px;
+        width : 300px
+    }
+.artist_image_sundarlama2 img{
+    height : 300px;
+    width : 250px;
+}
+.artist_image_sundarlama1 img{
+    height : 300px;
+    width : 439px;
+}
+.artistmain_content_art{
+    font-size: 17px;
+    margin-bottom: 12%;
+}
+.event_img_proj4 img{
+    height:368px;
+    width: 300px;
+}
+.artist_image_proj4 img{
+    height: 200px;
+    width :320px;
+
+}
+
+
+}

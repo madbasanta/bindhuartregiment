@@ -1,0 +1,47 @@
+h1.privacy_policy_main_title {
+    font-family: 'Antigone';
+    color: white;
+    font-size: 45px;
+    text-align: center;
+    margin: 5%;
+}
+.privacy_policy_info p{
+    text-align: justify;
+    color: white;
+    font-family: 'Mazin';
+    font-weight: lighter;
+    font-size: 24px;
+
+}
+.privacy_policy_info {
+    margin: 5%;
+}
+.privacy_policy_content{
+    margin: 5%;
+}
+
+.privacy_policy_content h1{
+    color: yellow;
+    font-size: 26px;
+    font-family: 'Mazin';
+    font-weight: lighter;
+}
+.privacy_policy_content p{
+    text-align: justify;
+    color: white;
+    font-family: 'Mazin';
+    font-weight: lighter;
+    font-size: 24px;
+
+}
+@media only screen and (max-width: 500px){
+    .privacy_policy_info p{
+        font-size: 18px;
+    }
+    .privacy_policy_content p{
+        font-size: 18px;
+    }
+    .privacy_policy_content h1{
+        font-size: 20px;
+    }
+}

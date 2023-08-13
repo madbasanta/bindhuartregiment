@@ -1,0 +1,230 @@
+.art_bill {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+}
+.semi_circle {
+    background: white;
+    height: 200vh;
+    border-radius: 50%;
+    width: 150%;
+    position: absolute;
+    left: -26vw;
+    top: -100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.pnc_cov {
+    margin-top: 30%;
+}
+h1.pnc {
+    font-family: 'Poppins';
+    font-weight: bold;
+    font-size: 80px;
+}
+h1.question_bill {
+    font-size: 65px;
+    font-family: 'Mazin';
+    color: white;
+    text-align: start;
+}
+.question_bill {
+    display: flex;
+    justify-content: center;
+    margin: 3%;
+}
+.bill_main_img {
+    display: flex;
+    justify-content: center;
+}
+img.billboardarticle_image {
+    height: 600px;
+}
+p.words {
+    color: white;
+    font-family: 'Mazin';
+    font-size: 25px;
+    text-align: justify;
+}
+.words {
+    margin: 7%;
+}
+h1.findm_ins {
+    color: white;
+    font-family: 'poppins';
+    font-size: 45px;
+    font-weight: bold;
+}
+.wrapper_info{
+    width: 70%;
+}
+.wrapper_info p{
+    font-family: 'Mazin';
+    font-size: 22px;
+    font-weight: lighter;
+    color: white;
+    margin: 2%;
+}
+.info_article_words{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 7%;
+    border: solid 2px white;
+    margin: 3%;
+}
+.img_info_article{
+    width: 30%;
+    border-radius: 20px;
+    margin: 2%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.findm_ins {
+    display: flex;
+    justify-content: center;
+}
+button.TH {
+    position: relative;
+    font-size: 1.5em;
+    padding: 0.7em 1.4em;
+    background-color: #b6a9d0;
+    text-decoration: none;
+    border: none;
+    border-radius: 0.5em;
+    color: white;
+    box-shadow: 0.5em 0.5em 0.5em rgba(0, 0, 0, 0.3);
+  }
+  
+  button.TH::before {
+    position: absolute;
+    content: '';
+    height: 0;
+    width: 0;
+    top: 0;
+    left: 0;
+    /* background: linear-gradient(135deg, rgba(33,33,33,1) 0%, rgba(33,33,33,1) 50%, rgba(150,4,31,1) 50%, rgba(191,4,38,1) 60%); */
+    background: linear-gradient(135deg, black 0%, black 50%, WHITE 50%, WHITE 60%);
+    border-radius: 0 0 0.5em 0;
+    box-shadow: 0.2em 0.2em 0.2em rgba(0, 0, 0, 0.3);
+    transition: 0.3s;
+  }
+  
+  button.TH:hover::before {
+    width: 1.6em;
+    height: 1.6em;
+  }
+  
+  button.TH:active {
+    box-shadow: 0.2em 0.2em 0.3em rgba(0, 0, 0, 0.3);
+    transform: translate(0.1em, 0.1em);
+  }
+  .link_artmain {
+    display: flex;
+    justify-content: center;
+    margin: 6%;
+}
+@media only screen and (max-width: 500px){
+    /* .cover_arrowdown {
+        display: none;
+    }
+    .back {
+        display: block;
+    }
+    .section_1--art {
+        width: 80px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    button.cssbuttons-io-button {
+        font-size: 8px;
+    }
+    button.explore_art {
+        font-size: 7px;
+        width: 80px;
+        height: 27px;
+    } */
+    .img_info_article img{
+        width: 100px;
+        height: 125px;
+
+    }
+    .wrapper_info p{
+        font-size: 11px;
+
+    }
+    h1.pnc {
+        font-size: 35px;
+    }
+    .semi_circle {
+       
+        top: -140vh;
+    }
+    .pnc_cov {
+        margin-top: 150%;
+    }
+    h1.question_bill {
+        font-size: 30px;
+    }
+    .art_bill {
+        height: 70vh;
+    }
+    .question_bill {
+        margin: 4%;
+    }
+    img.billboardarticle_image {
+        height: 235px;
+        width: 340px;
+    }
+    p.words {
+        font-size: 17px;
+    }
+    h1.findm_ins {
+        font-size: 30px;
+    }
+    .words {
+        margin: 5%;
+    }
+    button.TH {
+        font-size: 1em;
+    }
+    /* .section_2--art {
+        align-items: center;
+    } */
+}
+@media screen and (max-width:320px) and (min-width:280px){
+    .pnc_cov {
+      margin-top: 118%;
+    }
+    h1.question_bill {
+        font-size: 25px;
+    }
+    button.TH {
+        font-size: 1em;
+    }
+     
+   }
+@media screen and (max-width:900px) and (min-width:500px){
+    .semi_circle {
+        top: -130vh;
+    }
+    .pnc_cov {
+        margin-top: 105%;
+    }
+    .art_bill {
+        height: 80vh;
+    }
+    h1.question_bill {
+        font-size: 60px;
+    }
+    .words {
+        margin: 5%;
+    }
+    img.billboardarticle_image {
+        height: 435px;
+        width: 652.5px;
+    }
+}

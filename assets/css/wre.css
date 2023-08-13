@@ -1,0 +1,83 @@
+.billboard_image{
+    display: flex;
+    justify-content: center;
+    margin: 5%;
+}
+.main_title_bar{
+    margin-top: 5%;
+    margin-bottom: 5%;
+    margin-left: 25%;
+}
+.main_title_bar h1{
+    font-size: 80px;
+    font-family: 'Antigone';
+    color: white;
+    font-weight: bold;
+}
+span.whatis{
+    text-decoration: underline;
+    text-decoration-color: yellow;    
+}
+span.bindhuart{
+    text-decoration: underline;
+    text-decoration-color: aquamarine;   
+}
+span.regiment{
+    text-decoration: underline;
+    text-decoration-color: purple;
+}
+.bindhuartregiment_body{
+    margin: 7%;
+    color: white;
+}
+.bindhuartregiment_body p{
+    font-family: 'Mazin';
+    font-size: 22px;
+    font-weight: lighter;
+    text-align: justify;
+}
+.su_bill{
+    display: flex;
+    justify-content: center;
+    margin: 7%;
+}
+.su_bill h1{
+    text-align: left;
+    font-family: 'Antigone';
+    font-size: 80px;
+    font-weight: bold;
+    color: white;
+}
+.su_mainbody_container{
+    margin: 7%;
+}
+.su_mainbody_container p{
+    font-family: 'Mazin';
+    font-size: 22px;
+    font-weight: lighter;
+    color: white;
+}
+@media only screen and (max-width: 500px){
+    .billboard_image img{
+        width: 310px;
+        height: 174px;
+    }
+    .main_title_bar{
+        margin: 8%;
+    }
+    .main_title_bar h1{
+        font-size: 40px;
+    }
+    .bindhuartregiment_body p{
+        font-size: 17px;
+    }
+    .su_bill h1{
+        font-size: 40px;
+    }
+    .su_mainbody_container{
+        margin: 4%;
+    }
+    .su_mainbody_container p{
+        font-size: 17px;
+    }
+}

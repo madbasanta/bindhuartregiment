@@ -1,0 +1,128 @@
+.art_bill {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+}
+.semi_circle {
+    background: white;
+    height: 200vh;
+    border-radius: 50%;
+    width: 150%;
+    position: absolute;
+    left: -26vw;
+    top: -100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.pnc_cov {
+    margin-top: 30%;
+}
+h1.pnc {
+    font-family: 'Antigone';
+    font-weight: bold;
+    font-size: 80px;
+}
+img.pod_bill{
+    width: 1440px;
+    aspect-ratio: 16/9;
+    object-fit: contain;
+}
+.img_bill{
+    display: flex;
+    justify-content: center;
+    margin: 10%;
+}
+
+.\?-\>a {
+    text-align: justify;
+    margin: 5%;
+}
+.\?-\>a p{
+    font-family: 'Mazin';
+    font-weight: lighter;
+    font-size: 22px;
+    color: white;  
+}
+.audio-player {
+    width: 900px;
+    margin: 0 auto;
+    padding: 10px;
+    background-color: #f5f5f5;
+    border-radius: 5px;
+  }
+  
+  .audio-player audio {
+    width: 100%;
+}
+
+
+
+
+
+@media only screen and (max-width: 500px){
+    h1.pnc {
+        font-size: 35px;
+    }
+    .semi_circle { 
+        top: -140vh;
+    }
+    .pnc_cov {
+        margin-top: 150%;
+    }
+    .art_bill {
+        height: 63vh;
+    }
+    img.pod_bill {
+        width: 900px;
+    }
+    h1.\?-\>a {
+        font-size: 26px;
+    }
+    .\?-\>a p{
+        font-size: 17px;
+    }
+    .audio-player{
+        width: 300px;
+    }
+}
+
+
+
+@media screen and (max-width:320px) and (min-width:280px){
+    .pnc_cov {
+      margin-top: 118%;
+    }
+    h1.question_bill {
+        font-size: 25px;
+    }
+    img.pod_bill {
+        width: 360px;
+    }
+    h1.\?-\>a {
+        font-size: 26px;
+    }
+}
+
+
+@media screen and (max-width:900px) and (min-width:500px){
+    .semi_circle {
+        top: -130vh;
+    }
+    .pnc_cov {
+        margin-top: 105%;
+    }
+    .art_bill {
+        height: 80vh;
+    }
+    img.pod_bill {
+        width: 768px;
+    }
+    h1.\?-\>a {
+        font-size: 30px;
+    }
+    h1.pnc {
+        font-size: 60px;
+    }
+
+}

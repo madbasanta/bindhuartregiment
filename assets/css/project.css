@@ -1,0 +1,386 @@
+.main_billboard_text{
+    color: white;
+    font-family: antigone;
+    font-weight: bold;
+    font-size: 60px;
+    margin-left: 25%;
+    margin-top: 6%;
+    
+}
+p.f_n_2 {
+    margin-left: 20%;
+    margin-top: 5%;
+}
+p.f_n_3 {
+    margin-left: 30%;
+    margin-top: 5%;
+}
+.billboard_main {
+    width: 100%;
+}
+.collab_3{
+    display: none;
+}
+.collab_4{
+    display: none;
+}
+.collab_5{
+    display: none;
+}
+.collab_6{
+    display: none;
+}
+img.collab_1 {
+    width: 350px;
+    border-radius: 50px;
+}
+img.collab_2 {
+    width: 350px;
+    border-radius: 50px;
+}
+.collaboration_container {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 7%;
+    flex-wrap: wrap;
+    gap: 10%;
+    
+}
+.bill_nav {
+    display: flex;
+    justify-content: space-between;
+    margin: 10%;
+}
+a.F\&P {
+    color: white;
+    text-decoration: none;
+    font-size: 22px;
+    font-family: 'Jost';
+}
+a.Poetry {
+    color: white;
+    text-decoration: none;
+    font-size: 22px;
+    font-family: 'Jost';
+}
+a.Comm_project {
+    color: white;
+    text-decoration: none;
+    font-size: 22px;
+    font-family: 'Jost';
+}
+a.collaboration_main_bill {
+    color: white;
+    text-decoration: none;
+    font-size: 22px;
+    font-family: 'Jost';
+}
+p.collab_text_main_1 {
+    font-family: 'Mazin';
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    margin: 10%;
+
+}
+a.collaboration {
+    text-decoration: none;
+    color: white;
+    font-family: 'Mazin';
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 10%;
+}
+p.collab_text_main_2 {
+    font-family: 'Mazin';
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    margin: 10%;
+
+}
+.collab_news{
+    font-family: 'Mazin';
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    margin: 10%;
+
+}
+.background{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+  
+  }
+  .oneproject_bill h1{
+    font-family: 'Antigone';
+    font-weight: bold;
+    font-size: 45px;
+    color: white;
+}
+.oneproject_bill{
+    text-align: center;
+    margin: 5%;
+}
+.oneproject_bill_para{
+    margin: 7%;
+    text-align: justify;
+}
+.oneproject_bill_para p{
+    font-family: 'Mazin';
+    color: white;
+    font-size: 22px;
+    
+}
+
+.event_img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.event_wahuima{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wahuima_image_art2{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.artist_image_art_wahuima3{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.g_wrapper{
+    display: flex;
+    justify-content: center;
+}
+.glimpses{
+    border: solid 2px purple;
+    border-radius: 20px;
+    width: 300px;
+    background: black;
+    display: flex;
+    justify-content: center;
+
+}
+.glimpses h3{
+    font-family: 'Mazin';
+    font-weight: bold;
+    font-size: 28px;
+    color: white;
+}
+.g_images {
+    margin: 5%;
+    display: flex;
+    justify-content: center;
+}
+.event_img_doc{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+
+  }
+  
+/* for mobile devices */
+@media only screen and (max-width: 500px){
+    .main_billboard_text{
+        font-size: 30px;
+        margin-left: 15%;
+    }
+    .billboard_main{
+       width: 100%;
+    }
+    p.f_n_2 {
+        margin-left: 20%;
+    }
+    p.f_n_3 {
+        margin-left: 40%;
+    }
+    .project_billboard_1{
+        gap: 16%;
+        height: 25vh;
+    }
+    
+    a.F\&P {
+        font-size: 12px;
+    }
+    a.Poetry {
+        font-size: 12px;
+    }
+    a.Comm_project {
+        font-size: 12px;
+    }
+    a.collaboration_main_bill {
+        font-size: 12px;
+    }
+    .bill_nav{
+        margin: 0.5%;
+    }
+    img.collab_1 {
+        width: 140px;
+        height: 172.17px;
+        border-radius: 10%;
+    }
+    img.collab_2 {
+        width: 140px;
+        height: 172.17px;
+        border-radius: 10%;
+    }
+    .collaboration_container{
+        margin: 1%;
+        display: flex;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+    }
+    .collab_1{
+        width: 150px;
+    }
+    p.collab_text_main_1 {
+        font-size: 12px;
+    }
+    p.collab_text_main_2 {
+        font-size: 12px;
+    }
+    a.collaboration{
+        font-size: 12px;
+    }
+    .collab_news{
+        font-size: 12px;
+    }
+      h1.email_address_1{
+        font-size: 15px;
+  
+      }
+      .wave-group .input {
+        font-size: 12px;
+        width: 240px;
+  
+      }
+      .wave-group .label {
+      font-weight: bold;
+      font-size: 12px;
+        }
+       .oneproject_bill h1{
+        font-size: 32px;
+       }
+       .oneproject_bill_para p{
+        font-size: 17px;
+       }
+      .event_img img{
+        width: 300px;
+        height: 349px;
+      }
+      .event_wahuima img{
+        width:300px;
+        height:375px;
+      }
+
+    .wahuima_image_art2 img{
+        width:300px;
+        height:200px;
+    }
+
+    .artist_image_art_wahuima3 img{
+        width:300px;
+        height:240px;
+
+    }
+
+      .g1 img{
+        width: 100px;
+        height: 136px;
+      }
+      .g2 img{
+        width: 100px;
+        height: 136px;
+      }
+      .g3 img{
+        width: 100px;
+        height: 136px;
+      }
+      .glimpses h3{
+        font-size: 20px;
+      }
+      .glimpses{
+        width: 200px;
+      }
+      .event_img_doc{
+        display:flex;
+        justify-content: center;
+        align-items: center;
+
+      }
+      .event_img_doc img{
+        width: 300px;
+        height: 390px;
+    
+
+      }
+      }
+
+
+
+
+/* tablets */
+@media screen and (max-width:900px) and (min-width:500px){
+    .project_billboard_1{
+        height: 35vh
+    }
+    .main_billboard_text {
+        margin-top: 25%;
+        margin-left: 2%;
+    }
+    img.collab_1 {
+        width: 300px;
+    }
+    img.collab_2 {
+        width: 300px;
+    }
+    .collaboration_container{
+        margin-left: 10%;
+    }
+
+}
+
+/* for iphone 5 size devices */
+@media screen and (max-width:320px) and (min-width:280px){
+    .main_billboard_text{
+        font-size: 25px;
+        margin-top: 20%;
+        margin-left: 0;
+    }
+    a.F\&P {
+        font-size: 9px;
+    }
+    a.Poetry {
+        font-size: 9px;
+    }
+    a.Comm_project {
+        font-size: 9px;
+    }
+    a.collaboration_main_bill {
+        font-size: 9px;
+    }
+      
+}
+
+
+@media screen and (max-width: 192px){
+    body{
+        display: none;
+    }
+    
+
+}
+   

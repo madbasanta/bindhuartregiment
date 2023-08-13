@@ -1,0 +1,200 @@
+.main_billboard_getintouch {
+  width: 100%;
+}
+h2.gih {
+    font-size: 70px;
+    font-family: 'Antigone';
+    color: white;
+    align-self: center;
+}
+.getintouch_main_text {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    height :60vh;
+
+}
+p.text_bill {
+    color: white;
+    font-family: Mazin;
+    margin: 10%;
+    font-size :22px;
+
+}
+.wave-group {
+    position: relative;
+    margin: 50px;
+    width: 200px;
+  }
+  
+  .wave-group .input {
+    font-size: 16px;
+    color: white;
+    font-family: 'Poppins';
+    padding: 10px 10px 10px 5px;
+    display: block;
+    width: 200px;
+    border: none;
+    border-bottom: 1px solid #515151;
+    background: transparent;
+  }
+  
+  .wave-group .input:focus {
+    outline: none;
+  }
+  
+  .wave-group .label {
+    color: white;
+    font-family: Poppins;
+    font-size: 18px;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    left: 5px;
+    top: 10px;
+    display: flex;
+  }
+  
+  .wave-group .label-char {
+    transition: 0.2s ease all;
+    transition-delay: calc(var(--index) * .05s);
+  }
+  
+  .wave-group .input:focus ~ label .label-char,
+  .wave-group .input:valid ~ label .label-char {
+    transform: translateY(-20px);
+    font-size: 14px;
+    color: WHITE;
+  }
+  
+  .wave-group .bar {
+    position: relative;
+    display: block;
+    width: 100%;
+  }
+  
+  .wave-group .bar:before,.wave-group .bar:after {
+    content: '';
+    height: 2px;
+    width: 0;
+    bottom: 1px;
+    position: absolute;
+    background: violet;
+    transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -webkit-transition: 0.2s ease all;
+  }
+  
+  .wave-group .bar:before {
+    left: 50%;
+  }
+  
+  .wave-group .bar:after {
+    right: 50%;
+  }
+  
+  .wave-group .input:focus ~ .bar:before,
+  .wave-group .input:focus ~ .bar:after {
+    width: 50%;
+}
+.form_container {
+    display: flex;
+    justify-content: space-evenly;
+}
+.cta--s {
+    position: relative;
+    margin: auto;
+    padding: 12px 18px;
+    transition: all 0.2s ease;
+    border: none;
+    background: none;
+    margin: 50px;
+}
+   
+.cta--s:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    border-radius: 50px;
+    background: violet;
+    width: 45px;
+    height: 45px;
+    transition: all 0.3s ease;
+}
+   
+.cta--s span {
+    position: relative;
+    font-family: 'Poppins';
+    font-size: 15px;
+    font-weight: light;
+    letter-spacing: 0.05em;
+    color: white;
+}
+   
+.cta--s svg {
+    position: relative;
+    top: 0;
+    margin-left: 10px;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke: white;
+    stroke-width: 2;
+    transform: translateX(-5px);
+    transition: all 0.3s ease;
+}
+   
+.cta--s:hover:before {
+    width: 100%;
+    background: violet;
+}
+   
+.cta--s:hover svg {
+    transform: translateX(0);
+}
+   
+.cta--s:active {
+    transform: scale(0.95);
+}
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  appearance: textfield;
+}
+
+/* for mobile devices */
+@media only screen and (max-width: 500px){
+    p.text_bill{
+        font-size: 15px;
+    }
+    .form_container{
+        display: block;
+    }
+    h2.gih{
+        font-size: 48px;
+    }
+    .main_billboard{
+        width: 85%;
+    }
+    .getintouch_main_text{
+      height: 30vh;
+    }
+}
+/* for iphone 5 size devices */
+@media screen and (max-width:320px) and (min-width:280px){
+    h2.gih{
+        font-size: 60px;
+    }
+    .main_billboard{
+        width: 85%;
+    }
+}
+  

@@ -1,0 +1,295 @@
+a{
+  text-decoration: none;
+}
+h1.tell {
+  font-family: 'Poppins';
+  font-size: 70px;
+  color: white;
+}
+.billboard_1_pod {
+  display: flex;
+  justify-content: center;
+}
+.billboard_2_pod {
+  display: block;
+  margin: 5%;
+}
+p.subscribe {
+  text-decoration: none;
+  color: black;
+  font-size: 25px;
+  font-family: 'Poppins';
+  font-weight: bold;
+}
+.subscribe_box {
+  width: 400px;
+  background: yellow;
+  border-radius: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10%;
+
+}
+.wlc-\>podcast {
+  margin: 5%;
+}
+p.wlc-\>podcast {
+  color: white;
+  font-family: 'Mazin';
+  font-size: 27px;
+  text-align: justify;
+}
+h1.latest-\>podcast {
+  color: white;
+  font-family: 'Jost';
+  font-weight: 500;
+  font-size: 24px;
+}
+.latest-\>podcast {
+  width: 400px;
+  background: #5A0DFF;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50px;
+}
+
+
+
+.podcast_content {
+  width: 300px;
+}
+.pod_wrapper {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+.podc_body {
+  margin: 7%;
+  display: flex;
+  justify-content: space-evenly;
+  margin-left: 0%;
+
+}
+.pod_body{
+  margin: 3%;
+  margin-left: 25%;
+}
+.pod-title {
+  display: flex;
+  justify-content: center;
+}
+.pod_header{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2%;
+  position: relative;
+}
+.pod_h1{
+  background-color: #250A3A;
+  color: white;
+  font-family: 'Mazin';
+  font-size: 15px;
+  font-weight: lighter;
+  width: 150px;
+  height: 30px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.pod_h2{
+  background-color: #625187;
+  color: white;
+  font-family: 'Mazin';
+  font-size: 12px;
+  font-weight: lighter;
+  width: 150px;
+  height: 30px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 65%;
+}
+.pod_info p{
+  font-family: 'Mazin';
+  font-size: 22px;
+  font-weight: lighter;
+  color: white;
+}
+.allep_title{
+  display: flex;
+  justify-content: left;
+  margin: 5%;
+}
+.allep_title h1{
+  font-family: 'Antigone';
+  font-size: 32px;
+  font-weight: bold;
+  color: white;
+}
+.poet1 {
+    display: flex;
+    border: solid 2px white;
+    margin: 2%;
+    border-radius: 25px;
+}
+.poetimg{
+  margin: 5%;
+}
+.poetdetails{
+  margin: 7%;
+}
+.poettitle{
+  margin: 2%;
+}
+.poetsubtitle{
+  margin: 2%;
+}
+.poettitle h4{
+  color: white;
+  font-family: 'Mazin';
+  font-weight: bold;
+  font-size: 22px;
+}
+.poetsubtitle h6{
+  color: white;
+  font-size: 17px;
+  font-family: 'Mazin';
+  font-weight: bold;
+}
+.podpoetinfo{
+  margin: 2%;
+}
+.podpoetinfo p{
+  font-family: 'Mazin';
+  font-size: 22px;
+  color: white;
+}
+.poet_listen_pods{
+  width: 300px;
+  background-color: #885CE6;
+  display: flex;
+  justify-content: center;
+  gap: 7%;
+  border-radius: 20px;
+  align-items: center;
+  margin: 5%;
+
+}
+.lis_pod{
+  width: 250px;
+  background-color: #885CE6;
+  display: flex;
+  justify-content: center;
+  gap: 7%;
+  border-radius: 20px;
+  align-items: center;
+  margin: 5%;
+}
+.pod_info {
+  margin: 2%;
+}
+.lis_pod p{
+  color: white;
+  font-family: 'Mazin';
+  font-weight: bold;
+  font-size: 24px;
+}
+.poet_listen_pods p{
+  color: white;
+  font-family: 'Mazin';
+  font-weight: bold;
+  font-size: 24px;
+}
+@media only screen and (max-width: 500px){
+  h1.tell {
+      font-size: 35px;
+  }
+  p.subscribe {
+      font-size: 17px;
+  }
+  .subscribe_box {
+      width: 200px;
+      height: 30px;
+      margin-top: 20px;
+  }
+  p.wlc-\>podcast {
+    font-size: 19px;
+  }
+  .wlc-\>podcast {
+    margin: 4%;
+  }
+  .latest-\>podcast {
+    width: 200px;
+    height: 35px;
+  }
+  h1.latest-\>podcast {
+    font-size: 17px;
+  }
+  .podc_body{
+    flex-wrap: wrap;
+    margin-left: -25%;
+  }
+  .pod_info p{
+    font-size: 17px;
+  }
+  .lis_pod p{
+    font-size: 18px;
+  }
+  .play img{
+    height: 28px;
+    width: 28px;
+  }
+  .lis_pod{
+    width: 200px;
+  }
+  .pod_wrapper{
+    margin-bottom: 10%;
+  }
+  .poetimg img{
+    height: 300px;
+    width: 300px;
+  }
+  .poet1{
+    display: block;
+  }
+  .poettitle h4{
+    font-size: 18px;
+  }
+  .poetsubtitle h6{
+    font-size: 14px;
+  }
+  .podpoetinfo p{
+    font-size: 17px;
+  }
+  .poet_listen_pods p{
+    font-size: 18px;
+  }
+  .poet_listen_pods{
+    width: 200px;
+    gap: 3%;
+  }
+}
+
+
+
+@media screen and (max-width:320px) and (min-width:280px){
+  h1.tell {
+      font-size: 24px;
+  }
+}
+@media screen and (max-width:900px) and (min-width:500px){
+  .wlc-\>podcast {
+    margin: 5%;
+   } 
+}

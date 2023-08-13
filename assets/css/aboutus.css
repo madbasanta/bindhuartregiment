@@ -1,0 +1,147 @@
+body{
+ overflow-x: hidden;
+}
+.main_bill--ab{
+    height: fit-content;
+    width: 100%;
+    margin: 10%;
+}
+h1.about{
+    margin-left: 20%;
+    color: white;
+    font-family: 'Antigone';
+    font-size: 50px;
+    font-weight: bold;
+}
+h1.the{
+    margin-left: 35%;
+    color: white;
+    font-family: 'Antigone';
+    font-size: 50px;
+    font-weight: bold;
+}
+h1.team{
+    margin-left: 45%;
+    color: white;
+    font-family: 'Antigone';
+    font-size: 50px;
+    font-weight: bold;
+}
+.billboard-about{
+    margin: 7%;
+}
+.about_para{
+    color: white;
+    font-family: 'Mazin';
+    font-size: 25px;
+    text-align: justify;
+}
+.saugat{
+    margin: 7%;
+}
+.Poojan{
+    margin: 7%;
+}
+h1.name-ab{
+   color: white;
+   font-family: 'Antigone';
+   font-weight: bold;
+   font-size: 35px;
+}
+h3.desc-ab{
+    color: white;
+    font-family: 'Mazin';
+    text-decoration: underline;
+    font-size: 30px;
+}
+.info-container {
+    margin-top: 7%;
+    display: flex;
+    justify-content: center;
+    gap: 10%;
+}
+.para--saugat{
+    color: white;
+    font-size: 25px;
+    font-family: 'Mazin';
+    text-align: justify;
+    width: 60%;
+}
+.image--saugat{
+    width: 40%;
+
+}
+.para--poojan{
+    color: white;
+    font-size: 25px;
+    font-family: 'Mazin';
+    text-align: justify;
+    width: 60%;
+
+}
+.image--poojan{
+    width: 40%;
+}
+
+
+@media only screen and (max-width: 500px){
+     h1.about{
+        font-size: 35px;
+        margin-left: 15%;
+     }
+     h1.the{
+        font-size: 35px;
+        margin-left: 25%;
+     }
+     h1.team{
+        font-size: 35px;
+        margin-left: 35%;
+     }
+     .about_para{
+        font-size: 14px;
+     }
+     .billboard-about{
+        margin: 5%;
+     }
+     h1.name-ab{
+        font-size: 22px;
+     }
+     h3.desc-ab{
+         font-size: 17px;
+     }
+     .saugat{
+        margin: 5%;
+    }
+    .Poojan{
+        margin: 5%;
+    }
+    .para--saugat{
+        font-size: 10px;
+    }
+    .para--poojan{
+        font-size: 10px;
+    }
+    .info-container {
+        margin-top: 5%;
+    }
+    img.saugatimg {
+        width: 100px;
+        height: 100px;
+    }
+    img.Poojanimg {
+        width: 100px;
+        height: 125px;
+    }
+    .image_saugat{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .image_poojan{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+}
