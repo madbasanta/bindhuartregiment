@@ -14,12 +14,13 @@ function dd() {
     echo '<pre>';
     foreach(func_get_args() as $arg) {
         print_r($arg);
+        echo '<br>';
     }
     echo '</pre>';
     exit;
 }
 
-dd(base_path('index.html'));
+dd(base_path('index.html'), 'full path');
 
 
 switch($_SERVER['REQUEST_URI']) {
