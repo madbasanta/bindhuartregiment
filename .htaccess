@@ -7,6 +7,6 @@
 
     # Redirect all requests to index.php except existing files or directories
     RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteCond %{REQUEST_FILENAME} !-d
+    #RewriteCond %{REQUEST_FILENAME} !-d
     RewriteRule ^(.*)$ public/index.php/$1 [L]
 </IfModule>
