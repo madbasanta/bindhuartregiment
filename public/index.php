@@ -17,8 +17,11 @@ switch($_SERVER['REQUEST_URI']) {
     case '/login':
         require(base_path('admin/login.php'));
         break;
+
+    case '/404':
+        require(base_path('404/404.html'));
+        break;
     default:
         header('location:/404');
-        require(base_path('404/404.html'));
         break;
 }
