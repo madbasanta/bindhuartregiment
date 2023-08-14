@@ -20,6 +20,11 @@ function dd() {
 }
 
 
-dd($_SERVER);
-
-echo "Welcome!!";
+switch($_SERVER['REQUEST_URI']) {
+    case '/':
+        require(base_path('index.html'));
+        break;
+    default:
+        require(base_path('404/404.html'));
+        break;
+}
