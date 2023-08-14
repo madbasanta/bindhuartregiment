@@ -19,6 +19,7 @@ function dd() {
     exit;
 }
 
+dd(base_path('index.html'));
 
 
 switch($_SERVER['REQUEST_URI']) {
