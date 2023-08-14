@@ -1,7 +1,7 @@
 <?php
 
 function base_dir($dir = '') {
-    $base = __DIR__;
+    $base = dirname(__DIR__);
 
     if($dir === '') {
         return $base;
