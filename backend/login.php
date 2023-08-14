@@ -31,8 +31,8 @@
                                             <div class="form-floating mb-3">
                                                 <input class="form-control" id="inputPassword" name="password" type="password" placeholder="Password" />
                                                 <label for="inputPassword">Password</label>
-                                                <?php if(isset($_SESSION['email_error'])): ?>
-                                                    <div class="text-danger"><?= $_SESSION['email_error'] ?></div>
+                                                <?php if(isset($_SESSION['email_password'])): ?>
+                                                    <div class="text-danger"><?= $_SESSION['email_password'] ?></div>
                                                 <?php endif; ?>
                                             </div>
                                             <div class="form-check mb-3">
