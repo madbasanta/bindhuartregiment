@@ -2,7 +2,13 @@
 
 
 if($_SERVER['REQUEST_METHOD'] === 'GET') {
-    require_once(base_path('backend/login.html'));
+    if(auth()) {
+        return header('location:/admin');
+    }
+
+    require_once(base_path('backend/login.php'));
 } elseif($_SERVER['REQUEST_METHOD'] === 'POST') {
     // logic here
+    $_SESSION['email_error'] = 'Invalid username or password';
+    require_once(base_path('backend/login.php'));
 }
