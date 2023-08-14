@@ -18,7 +18,7 @@ switch($_SERVER['REQUEST_URI']) {
         require(base_path('admin/login.php'));
         break;
     default:
-        header('location:404');
+        header('location:/404');
         require(base_path('404/404.html'));
         break;
 }
