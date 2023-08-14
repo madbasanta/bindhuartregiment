@@ -1,6 +1,6 @@
 <?php
 
-function base_dir($dir = '') {
+function base_path($dir = '') {
     $base = dirname(__DIR__);
 
     if($dir === '') {
@@ -19,8 +19,6 @@ function dd() {
     echo '</pre>';
     exit;
 }
-
-dd(base_path('index.html'), 'full path');
 
 
 switch($_SERVER['REQUEST_URI']) {
