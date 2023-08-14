@@ -20,7 +20,7 @@ function dd() {
 }
 
 
-dd(base_dir(), base_dir('404'));
+// dd(base_dir(), base_dir('404'));
 
 
 switch($_SERVER['REQUEST_URI']) {
