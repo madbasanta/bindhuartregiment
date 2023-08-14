@@ -12,5 +12,5 @@ if($_SERVER['REQUEST_METHOD'] === 'GET') {
     $_SESSION['email_error'] = 'Invalid username or password';
     require_once(base_path('backend/login.php'));
     
-    unset($_SERVER['email_error']);
+    unset($_SESSION['email_error']);
 }
