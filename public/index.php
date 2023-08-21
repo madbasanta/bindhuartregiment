@@ -49,10 +49,11 @@ switch ($_SERVER['REQUEST_URI']) {
             if (isset($content_types[$extension])) {
                 header('Content-Type: ' . $content_types[$extension]);
             } else {
-                header('Content-Type: application/octet-stream');
+                dd($static);
             }
             echo file_get_contents($static);
         } else {
+            dd($static);
             header('location:/404');
         }
         break;
