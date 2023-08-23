@@ -10,14 +10,23 @@ switch ($_SERVER['REQUEST_URI']) {
     case '/admin':
         if (auth()) {
             require(base_path('admin/dashboard.php'));
-        } else {
-            header('location:/login');
-        }
+        } else header('location:/admin/login');
         break;
-    case '/login':
+    case '/admin/login':
         require(base_path('admin/login.php'));
         break;
-
+    // route blogs
+    case '/admin/blogs':
+        if (auth()) {
+            require(base_path('backend/blogs/index.php'));
+        } else header('location:/admin/login');
+        break;
+    case '/admin/blogs/create':
+        if (auth()) {
+            require(base_path('admin/blogs_create.php'));
+        } else header('location:/admin/login');
+        break;
+    // route 404
     case '/404':
         require(base_path('404/404.html'));
         break;
@@ -53,8 +62,7 @@ switch ($_SERVER['REQUEST_URI']) {
             }
             echo file_get_contents($static);
         } else {
-            dd($static);
-            header('location:/404');
+            require_once base_path('404/404.html');
         }
         break;
 }

@@ -46,3 +46,8 @@ function config($key, $default = null) {
     }
     return $value ?? $default;
 }
+
+function is_route($regex)
+{
+    return preg_match('#^' . $regex . '$#', $_SERVER['REQUEST_URI']);
+}
