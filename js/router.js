@@ -55,6 +55,11 @@ const routes = {
 		title : "artistprofile",
 		description: "artist",
 	},
+	artist5:{
+		template : "artist/artists/artist5.html",
+		title : "artistprofile",
+		description: "artist",
+	},
 	
 	podcast:{
 		template : "/podcast/podcast.html",
