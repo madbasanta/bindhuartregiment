@@ -17,15 +17,23 @@ if($_SERVER['REQUEST_METHOD'] === 'GET') {
     }
 
     if(count($_SESSION['post_errors']) === 0) {
-        ORM::table('blog_posts')->create([
-            'title' => $_POST['title'],
-            'content' => $_POST['content'],
-            'category_id' => $_POST['category_id'] ?? null,
-            'user_id' => auth()->id
-        ]);
 
-        $_SESSION['post_old'] = [];
-        $_SESSION['success'] = 'Blog created successfully';
+        $result = ORM::transaction(function() {
+            ORM::table('blog_posts')->create([
+                'title' => $_POST['title'],
+                'content' => $_POST['content'],
+                'category_id' => empty($_POST['category_id']) ? null : $_POST['category_id'],
+                'user_id' => auth()->id
+            ]);
+        });
+
+        if($result['STATUS'] === 'SUCCESS') {
+            $_SESSION['post_old'] = [];
+            $_SESSION['success'] = 'Blog created successfully';
+        } else {
+            $_SESSION['error'] = $result['MESSAGE'];
+        }
+
     }
 
     require_once(base_path('backend/blogs/create.php'));

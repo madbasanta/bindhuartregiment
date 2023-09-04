@@ -2,13 +2,12 @@
 // mysql database connection code
 // object oriented
 
-use ORM as GlobalORM;
-
 class QueryBuilder
 {
     private $connection;
     public $table;
     public $whereClause;
+    public $orderClause;
     public $operators = [
         '=', '<', '>', '<=', '>=', '<>', '!='
     ];
@@ -43,6 +42,7 @@ class QueryBuilder
 
     protected function addNestedWhereQuery($wheres, $boolean)
     {
+        $wheres = mysqli_escape_string($this->connection, $wheres);
         $this->whereClause .= ($this->whereClause ? " $boolean " : "") . "( {$wheres} )";
         return $this;
     }
@@ -75,6 +75,7 @@ class QueryBuilder
             return $this->whereNull($column, $boolean, $operator !== '=');
         }
 
+        $value = mysqli_escape_string($this->connection, $value);
         $this->whereClause .= (empty($this->whereClause) ? '' : " $boolean ") . "$column $operator '$value'";
 
         return $this;
@@ -92,7 +93,8 @@ class QueryBuilder
         return $this;
     }
 
-    public function whereNotNull($columns, $boolean = 'and'){
+    public function whereNotNull($columns, $boolean = 'and')
+    {
         return $this->whereNull($columns, $boolean, true);
     }
 
@@ -101,11 +103,17 @@ class QueryBuilder
         return $this->where($column, $operator, $value, $boolean);
     }
 
+    public function orderBy($column, $direction = 'asc')
+    {
+        $this->orderClause .= (empty($this->orderClause) ? ' ORDER BY ' : '') . " $column $direction ";
+        return $this;
+    }
+
     public function get()
     {
-        $sql = "SELECT * FROM {$this->table}" . ($this->whereClause ? " WHERE {$this->whereClause}" : '');
+        $sql = "SELECT * FROM {$this->table}" . ($this->whereClause ? " WHERE {$this->whereClause}" : '') . ($this->orderClause ? " {$this->orderClause}" : '');
         $result = $this->connection->query($sql);
-        if(!$result) {
+        if (!$result) {
             throw new Exception($this->connection->error);
         }
         $records = [];
@@ -119,9 +127,9 @@ class QueryBuilder
 
     public function first()
     {
-        $sql = "SELECT * FROM {$this->table}" . ($this->whereClause ? " WHERE {$this->whereClause} LIMIT 1" : '');
+        $sql = "SELECT * FROM {$this->table}" . ($this->whereClause ? " WHERE {$this->whereClause} " : '') . ($this->orderClause ? " {$this->orderClause}" : '') . " LIMIT 1";
         $result = $this->connection->query($sql);
-        if(!$result) {
+        if (!$result) {
             throw new Exception($this->connection->error);
         }
         $records = [];
@@ -138,31 +146,42 @@ class QueryBuilder
         return $this->where('id', '=', $id)->first();
     }
 
-    public function create(array $data) 
+    public function create(array $data)
     {
         $data['created_at'] ??= date('Y-m-d H:i:s');
         $data['updated_at'] ??= date('Y-m-d H:i:s');
 
         $sql = "INSERT INTO {$this->table} SET ";
-        foreach($data as $key => $value) {
-            if(is_null($value)) {
+        foreach ($data as $key => $value) {
+            if (is_null($value)) {
                 $value = 'NULL';
-            } elseif(is_numeric($value)) {
+            } elseif (is_numeric($value)) {
                 $value = $value;
             } else {
+                $value = mysqli_escape_string($this->connection, $value);
                 $value = "'$value'";
             }
             $sql .= "$key = $value, ";
         }
         $sql = rtrim($sql, ', ');
-        
+        // dd($sql);
         $result = $this->connection->query($sql);
-        if($result) {
+        if ($result) {
             return ORM::table($this->table)->where([
                 'id' => $this->connection->insert_id
             ])->first();
         }
         throw new Exception($this->connection->error);
+    }
+
+    public function delete()
+    {
+        $sql = "DELETE FROM {$this->table}" . ($this->whereClause ? " WHERE {$this->whereClause}" : '');
+        $result = $this->connection->query($sql);
+        if (!$result) {
+            throw new Exception($this->connection->error);
+        }
+        return $result;
     }
 
     // You can add more methods here for additional query operations like updating, deleting, etc.
@@ -171,6 +190,7 @@ class QueryBuilder
 class ORM
 {
     public $connection;
+    public static $transactionConnection;
 
     public function __construct()
     {
@@ -184,7 +204,35 @@ class ORM
 
     public static function table($table)
     {
+        if(self::$transactionConnection) {
+            return new QueryBuilder(self::$transactionConnection, $table, '');
+        }
         $orm = new ORM();
         return new QueryBuilder($orm->connection, $table, '');
+    }
+
+    public static function transaction($callback)
+    {
+        static::$transactionConnection = $connection = (new ORM)->connection;
+        $connection->autocommit(false);
+
+        $result = [
+            'STATUS' => 'SUCCESS',
+        ];
+        try {
+            $data = $callback($connection);
+            $connection->commit();
+            $connection->autocommit(true);
+            static::$transactionConnection = null;
+            $result['DATA'] = $data;
+            return $result;
+        } catch (\Throwable $th) {
+            $connection->rollback();
+            $connection->autocommit(true);
+            static::$transactionConnection = null;
+            $result['STATUS'] = 'FAILED';
+            $result['MESSAGE'] = $th->getMessage();
+            return $result;
+        }
     }
 }

@@ -55,3 +55,10 @@ function is_route($regex)
 function old($key) {
     return $_SESSION['post_old'][$key] ?? null;
 }
+
+function str_limit($str, $limit = 50, $end = '...') {
+    if(strlen($str) > $limit) {
+        return substr($str, 0, $limit) . $end;
+    }
+    return $str;
+}

@@ -5,14 +5,23 @@ Route::get('/admin/blogs/create', 'authenticated', base_path('adminadmin/blogs_c
 Route::post('/admin/blogs/create', 'authenticated', base_path('adminadmin/blogs_create.php'));
 
 Route::post('/admin/blogs/get-all', 'authenticated', function() {
-    $blogs = ORM::table('blog_posts')->get();
+    $blogs = ORM::table('blog_posts')->orderBy('created_at', 'desc')->get();
     foreach($blogs as &$blog) {
         // load created user
         $blog->user = $blog->user_id ? ORM::table('users')->find($blog->user_id) : null;
         // load category
         $blog->category = $blog->category_id ? ORM::table('categories')->find($blog->category_id) : null;
+        // trim content
+        $blog->content = substr(strip_tags($blog->content), 0, 100);
     }
     echo json_encode($blogs);
+});
+Route::post('/admin/blogs/delete', 'authenticated', function() {
+    $res = ORM::transaction(function() {
+        $id = $_POST['id'];
+        ORM::table('blog_posts')->where('id', $id)->delete();
+    });
+    echo json_encode($res);
 });
 
 /* 
