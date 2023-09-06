@@ -34,6 +34,31 @@
     justify-content: center;
     align-items: center;
 }
+.artist_image_art_ryan1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.artist_image_art_ryan2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.artist_image_art_ryan3{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.artist_image_art_ryan4{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.artist_image_art_momin{
+ display: flex;
+ justify-content: center;
+ align-items: center;
+}
 .artist_image_art_jhapa1{
     display: flex;
     justify-content: center;
@@ -99,7 +124,7 @@
 }
 .artist_image_art{
     display: flex;
-    justify-content: center;
+    justify-content:center;
 }
 .artist_image_momin_art{
     display: flex;
@@ -113,10 +138,87 @@
     display:flex;
     justify-content: center;
 }
+.artist_image_sundarlamanew2 {
+    display: flex;
+    justify-content: center;
+}
 .artist_image_sundarlama2{
     display:flex;
     justify-content: center;
 }
+.artist_image_nirvita1{
+ display: flex;
+ justify-content: center;
+}
+.artist_image_nirvita2{
+    display: flex;
+    justify-content: center;
+   }
+   .artist_image_subas1{
+    display: flex;
+    justify-content: center;
+   }
+   .artist_image_subas2{
+    display: flex;
+    justify-content: center;
+   }
+   .artist_image_subas3{
+    display: flex;
+    justify-content: center;
+   }
+   .artist_image_bibek2{
+    display:flex;
+    justify-content: center;
+}
+.artist_image_bibek1{
+    display:flex;
+    justify-content: center;
+}
+.artist_image_bibek3{
+    display:flex;
+    justify-content: center;
+}
+.artist_image_sara{
+    display:flex;
+    justify-content: center;
+}
+.artist_image_art_sara1{
+    display:flex;
+    justify-content: center;
+}
+.artist_image_art_sara2{
+    display:flex;
+    justify-content: center;
+}
+.artist_image_art_sara3{
+    display:flex;
+    justify-content: center;
+}
+.artist_image_art_sara4{
+    display:flex;
+    justify-content: center;
+}
+.artist_image_art_sara5{
+    display:flex;
+    justify-content: center;
+}
+.artist_image_art_sara6{
+    display:flex;
+    justify-content: center;
+}
+.artist_image_poozan1{
+    display: flex;
+    justify-content: center;
+}
+.artist_image_poozan2{
+    display: flex;
+    justify-content: center;
+}
+.artist_image_poozan3{
+    display: flex;
+    justify-content: center;
+}
+
 .artistmain_content{
     margin: 7%;
 }
@@ -203,8 +305,29 @@
     }
   
     .artist_image_art_ryan img{
-        height: 284px;
+        height: 300px;
         width:300px;
+    }
+    .artist_image_art_ryan1 img{
+        height: 424px;
+        width:300px;
+    }
+    .artist_image_art_ryan2 img{
+        height: 380px;
+        width:300px;
+    }
+    .artist_image_art_ryan3 img{
+        height: 218px;
+        width:300px;
+    }
+    .artist_image_art_ryan4 img{
+        height: 225px;
+        width:300px;
+    }
+    
+    .artist_image_art_momin img{
+        height : 450px;
+        width : 300px
     }
     .artist_image_art_jhapa1 img{
         height: 511px;
@@ -227,7 +350,83 @@
 }
 .artist_image_sundarlama1 img{
     height : 300px;
-    width : 439px;
+    width : 285px;
+}
+.artist_image_sundarlamanew2 img{
+    height:196px;
+    width : 300px;
+}
+.artist_image_nirvita1 img{
+    height:300px;
+    width : 300px;
+}
+.artist_image_nirvita2 img{
+    height:300px;
+    width : 300px;
+}
+.artist_image_subas1 img{
+    height:418px;
+    width : 300px;
+}
+.artist_image_subas2 img{
+    height:300px;
+    width : 300px;
+}
+.artist_image_subas3 img{
+    height:200px;
+    width : 300px;
+}
+.artist_image_bibek2 img{
+    height:350px;
+    width: 300px;
+}
+.artist_image_bibek1 img{
+    height:375px;
+    width: 300px;
+}
+.artist_image_bibek3 img{
+    height:295.55px;
+    width: 300px;
+}
+.artist_image_sara img{
+    height:400px;
+    width:300px;
+}
+.artist_image_art_sara1 img{
+    height:200px;
+    width:300px;
+}
+.artist_image_art_sara2 img{
+    height:200px;
+    width:300px;
+}
+.artist_image_art_sara3 img{
+    height:300px;
+    width:300px;
+}
+.artist_image_art_sara4 img{
+    height:225px;
+    width:300px;
+}
+.artist_image_art_sara5 img{
+    height:400px;
+    width:300px;
+}
+.artist_image_art_sara6 img{
+    height:397px;
+    width:300px;
+}
+.artist_image_poozan1 img{
+    height:368.33px;
+    width:300px;
+}
+.artist_image_poozan2 img{
+    height:199.4px;
+    width:300px;
+}
+.artist_image_poozan3 img{
+    height:200px;
+    width:300px;
 }
 .artistmain_content_art{
     font-size: 17px;

@@ -34,7 +34,9 @@ font-display: swap;
     src: url(/assets/css/fonts/mazin2023/MazinDEMO-Bold.otf);
     font-display: swap;
   }
-
+html {
+    overflow-x: hidden;
+}
 body{
     background-color: black;
     margin: 0;
@@ -208,7 +210,7 @@ button.explore {
         transform: scale(0.85);
 }
 div#menu_on_click {
-  background-image: url(/images/backgroundmenu.jpg);
+  background-image: url(/images/forweb.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   z-index: 3;
@@ -333,7 +335,6 @@ a.imprint_x{
 .billboard_1 {
     display: flex;
 
-    margin-left: 2%;
 }
 img.billboardmainimage{
   object-fit: cover;
@@ -390,7 +391,7 @@ h1.art_and_literature {
     backdrop-filter: blur(150px);
 }
 .main_billboard {
-    width: 90%;
+    width: 100%;
     display: flex;
     justify-content: center;
     position: relative;
@@ -508,6 +509,7 @@ img.arrowimgafter{
     color: black;
 } */
 * {
+
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -684,10 +686,41 @@ p.explain_naade{
   margin:50px auto 0 auto;
   width:100%;
   display:flex;
-  align-items:space-around;
+  justify-content: center;
   max-width:1200px;
 }
+/*.send_us_text{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10%;
+
+}
+.send_us_text h1{
+  font-size: 25px;
+  font-family: 'Mazin';
+  font-weight: lighter;
+  color: white;
+
+} */
 .tile
+{
+  width:380px;
+  height:380px;
+  margin:10px;
+  background-color:black;
+  display:inline-block;
+  background-size:cover;
+  position:relative;
+  cursor:pointer;
+  transition: all 0.4s ease-out;
+  box-shadow: 0px 35px 77px -17px rgba(0,0,0,0.44);
+  overflow:hidden;
+  color:white;
+  font-family:'Roboto';
+  
+}
+.tileforarticle
 {
   width:380px;
   height:380px;
@@ -714,6 +747,18 @@ p.explain_naade{
   z-index:0;
   transition: all 0.4s ease-out;
 }
+.tileforarticle img
+{
+  height:100%;
+  width:100%;
+  position:absolute;
+  top:0;
+  left:0;
+  z-index:0;
+  transition: all 0.4s ease-out;
+}
+
+
 .tile .text
 {
 /*   z-index:99; */
@@ -724,7 +769,27 @@ p.explain_naade{
   display: flex;
   align-items: center;
 }
+.tileforarticle .text
+{
+/*   z-index:99; */
+  position:absolute;
+  padding:30px;
+  height:calc(100% - 60px);
+  width: 60%;
+  display: flex;
+  align-items: center;
+  
+}
 .tile h1
+{
+ 
+  font-weight:bold;
+  margin:0;
+  text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+  font-family: "Mazin";
+  font-size: 24px;
+}
+.tileforarticle h1
 {
  
   font-weight:bold;
@@ -740,7 +805,27 @@ p.explain_naade{
   font-style:italic;
    transform: translateX(200px);
 }
+.tileforarticle h2
+{
+  font-weight: bold;
+  margin:20px 0 0 0;
+  font-style:italic;
+   transform: translateX(200px);
+}
 .tile p
+{
+  font-family: "Poppins";
+  font-weight:bold;
+  color: white;
+  margin-left: 90%;
+  text-decoration: underline;
+  text-decoration-color: orange;
+  /* line-height: 25px; */
+/*   opacity:0; */
+  transform: translateX(-200px);
+  transition-delay: 0.2s;
+}
+.tileforarticle p
 {
   font-family: "Poppins";
   font-weight:bold;
@@ -767,11 +852,26 @@ p.explain_naade{
 box-shadow: 0px 35px 77px -17px rgba(0,0,0,0.64);
   transform:scale(1.05);
 }
+.tileforarticle:hover
+{
+/*   background-color:#99aeff; */
+box-shadow: 0px 35px 77px -17px rgba(0,0,0,0.64);
+  transform:scale(1.05);
+}
 .tile:hover img
 {
   opacity: 0.2;
 }
+.tileforarticle:hover img
+{
+  opacity: 0.2;
+}
 .tile:hover .animate-text
+{
+  transform:translateX(0);
+  opacity:1;
+}
+.tileforarticle:hover .animate-text
 {
   transform:translateX(0);
   opacity:1;
@@ -806,6 +906,12 @@ box-shadow: 0px 35px 77px -17px rgba(0,0,0,0.64);
 }
 
 .tile:hover span
+{
+  opacity:1;
+  transform:translateY(0px);
+}
+
+.tileforarticle:hover span
 {
   opacity:1;
   transform:translateY(0px);
@@ -1206,35 +1312,13 @@ button.reach_out_button:hover .icon-5 {
 .footer{
   width: 200%;
   aspect-ratio: 16/9;
-  background-color: #CAB8F0;
+  background-color: #7962a9;
   border-radius: 50%;
   position: absolute;
   left: -54%;
 
 }
-.footer_text_wrap {
-  display: flex;
-  gap: 20%;
-  width: 100%;
-}
-.text_footer_1{
-  z-index: 2;
-  margin-top: 13%;
-  margin-left: 10%;
-}
-.text_footer_2{
-  z-index: 2;
-  margin-top: 13%;
-  margin-left: 10%;
-  
-}
-a.footer_reach_out{
-  color: white;
-  text-decoration: none;
-  font-family: Poppins;
-  font-weight: bold;
-  font-size: 18px;
-}
+
 .wave-group-f input:-internal-autofill-selected {
   appearance: menulist-button;
   background-image: none !important;
@@ -1315,15 +1399,6 @@ right: 50%;
 .wave-group-f .input-f:focus ~ .bar-f:after {
 width: 50%;
 }
-h1.email_address {
-font-family: Poppins;
-font-size: 42px;
-}
-h1.email_address_1{
-font-family: Poppins;
-font-size: 42px;
-font-weight: lighter;
-}
 .cta--se {
   position: relative;
   padding: 12px 18px;
@@ -1390,13 +1465,10 @@ font-weight: lighter;
 
 }
 .footer_end{
-  width: 100%;
-  z-index: 2;
-  position: absolute;
   display: flex;
-  justify-content: center;
-  margin-top: 42%;
-  gap: 50%;
+  justify-content: space-around;
+  margin-top: 3%;
+
 }
 .socials{
   display: flex;
@@ -1433,6 +1505,57 @@ a.instagram{
 }
 a.twitter{
   text-decoration: none;
+}
+.f_s_w{
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+.f_end_s{
+  display: flex;
+  justify-content: space-between;
+  margin: 5%;
+}
+.privacy_policy_f a{
+    text-decoration: none;
+    font-size: 20px;
+    color: black;
+}
+.F_A_S {
+    position: absolute;
+    top: 30%;
+    width: 100%;
+}
+.line_f {
+  background: black;
+  height: 3px;
+  width: 100%;
+  margin-top: 5%;
+}
+.reachout_f h4{
+  color: white;
+  text-decoration: none;
+  font-family: Poppins;
+  font-weight: bold;
+  font-size: 18px;
+}
+.info_footer h3{
+  font-family: Poppins;
+  font-size: 42px;
+
+}
+.getnotified_f h4{
+  color: white;
+  text-decoration: none;
+  font-family: Poppins;
+  font-weight: bold;
+  font-size: 18px;
+
+}
+.GETOUTEART_f h3{
+  font-family: Poppins;
+  font-size: 42px;
+
 }
 /* for mobile devices */
 @media only screen and (max-width: 500px) {
@@ -1544,7 +1667,7 @@ a.twitter{
     }
     img.bill2_img {
       width: 300px;
-      height: 248.99px;
+      height: 300px;
     }
     
     #card{
@@ -1574,6 +1697,9 @@ a.twitter{
       display: flex;
       justify-content: center;
     }
+    .send_us_text h1{
+      font-size: 28px;
+    }
     .reach_out_wrap{
       display: grid;
     }
@@ -1593,46 +1719,6 @@ a.twitter{
       font-size: 11px;
 
     }
-    .footer_text_wrap{
-      height:300px;
-      justify-content: space-around;
-      margin-left: 7%;
-    }
-    .text_footer_1{
-      font-size: 20px;
-      margin-top: 13%;
-      margin-left: 0;
-    }
-    .text_footer_2{
-      margin-top: 13%;
-      margin-left: 0;
-      font-size: 20px;
-    }
-    h1.email_address_1{
-      font-size: 15px;
-
-    }
-    h1.email_address {
-      font-size: 15px;
-    }
-    .footer_wrap{
-      height: fit-content;
-    }
-    .footer_text_wrap{
-      justify-content: space-around;
-      margin-left: 7%;
-      gap: 0;
-    }
-    a.footer_reach_out {
-      font-size: 10px;
-    }
-    .last_line {
-      margin-top: 62%;
-      background: black;
-      height: 3px;
-      width: 100%;
-      position: absolute;
-    }
     .wave-group-f .input-f {
       font-size: 12px;
       width: 120px;
@@ -1642,10 +1728,6 @@ a.twitter{
     font-weight: bold;
     font-size: 12px;
 
-     }
-     .footer_end{
-      margin-top: 68%;
-      gap: 25%;
      }
      .privacy_policy{
       font-size: 8px;
@@ -1751,6 +1833,10 @@ a.twitter{
     height: 290px;
     width: 290px;
     }
+    .tileforarticle {
+      height: 290px;
+      width: 290px;
+      }
     .wrap {
       display: flex;
       flex-wrap: wrap;
@@ -1759,10 +1845,16 @@ a.twitter{
     .tile h1{
       font-size: 12px;
     }
+    .tileforarticle h1{
+      font-size: 12px;
+    }
     .dots {
       right: 40px;
     }
     .tile p{
+      font-size: 12px;
+    }
+    .tileforarticle p{
       font-size: 12px;
     }
     .cta span{
@@ -1773,43 +1865,66 @@ a.twitter{
       width: 90px;
   }
     img.billboardmainimage {
-     width: 232px;
-     height: 163px;
+     width: 500px;
+     height: 283px;
+     display:flex;
+     justify-content: center;
+     align-items: center;
     }
+    .footer_wrap{
+      height: 350px;
+    }
+    .info_footer h3 {
+      font-size: 18px;
+    }
+    .GETOUTEART_f h3 {
+      font-size: 18px;
+   }
+   .F_A_S {
+    top: 20%;
+    }
+    .reachout_f h4 {
+      font-size: 12px;
+  }
+  .getnotified_f h4 {
+    font-size: 12px;
 
     
 
 }
 @media screen and (max-width:900px) and (min-width:500px){
-      .footer_text_wrap{
-        gap: 0;
-      }
       .footer_wrap{
         height: 560px;
       }
       h1.bill_main_text {
         font-size: 55px;
-    }
-    div#menu_on_click {
+      }
+      div#menu_on_click {
       gap: 25%;
+      }
+      li.click_menu{
+        margin: 80px;
     }
-    li.click_menu{
-      margin: 80px;
-    }
-    .last_line {
-      margin-top: 60%;
-
-    }
-    .footer_end {
-      margin-top: 64%;
-      margin-left: 2%;
-  }
-  .wrap{
+      .wrap{
     display: block;
     margin-left: 23%;
 
   }
-
+  .F_A_S {
+    top: 20%;
+  }
+  .info_footer h3 {
+    font-size: 32px;
+  }
+  .GETOUTEART_f h3 {
+    font-size: 32px;
+}
+.line_f {
+  margin-top: 2%;
+}
+.footer {
+    height: 1000px;
+}
 
 }
 /* for iphone 5 size devices */
@@ -1823,9 +1938,6 @@ a.twitter{
   h1.bill_main_text {
     margin-left: 5%;
     margin-top: 10%;
-  }
-  .footer_text_wrap{
-    height: 250px;
   }
   ul.click_menu {
     margin-top: 5%;
@@ -1865,6 +1977,14 @@ a.twitter{
     height: 30px;
     transition: all 0.3s ease;
   }
+
+  img.billboardmainimage {
+    width: 300px;
+    height: 170px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+   }
    
   .cta--se span {
     position: relative;
@@ -1891,15 +2011,16 @@ a.twitter{
     width: 100%;
     background: violet;
   }
-  .last_line {
-    margin-top: 65%;
-  }
-  .footer_end{
-    margin-top: 69%;
-  }
   .btn-menu .icon{
     margin-left: 5.5%;
   }
+  .footer {
+    height: 400px;
+  }
+  .footer_end {
+    margin-top: 5%;
+  }
+
   
 }
 @media screen and (max-width: 192px){
@@ -1910,3 +2031,4 @@ a.twitter{
 
 }
     
+}

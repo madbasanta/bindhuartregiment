@@ -32,11 +32,11 @@ p.f_n_3 {
 }
 img.collab_1 {
     width: 350px;
-    border-radius: 50px;
+    border-radius: 0px;
 }
 img.collab_2 {
     width: 350px;
-    border-radius: 50px;
+    border-radius: 0px;
 }
 .collaboration_container {
     display: flex;
@@ -230,12 +230,12 @@ p.collab_text_main_2 {
     img.collab_1 {
         width: 140px;
         height: 172.17px;
-        border-radius: 10%;
+        border-radius: 0%;
     }
     img.collab_2 {
         width: 140px;
         height: 172.17px;
-        border-radius: 10%;
+        border-radius: 0%;
     }
     .collaboration_container{
         margin: 1%;
