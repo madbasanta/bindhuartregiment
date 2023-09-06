@@ -60,7 +60,26 @@ const routes = {
 		title : "artistprofile",
 		description: "artist",
 	},
-	
+	artist6:{
+		template : "artist/artists/artist6.html",
+		title : "artistprofile",
+		description: "artist",
+	},
+	artist7:{
+		template : "artist/artists/artist7.html",
+		title : "artistprofile",
+		description: "artist",
+	},
+	artist8:{
+		template : "artist/artists/artist8.html",
+		title : "artistprofile",
+		description: "artist",
+	},
+	artist9:{
+		template : "artist/artists/artist9.html",
+		title : "artistprofile",
+		description: "artist",
+	},
 	podcast:{
 		template : "/podcast/podcast.html",
 		title : "podcast",
