@@ -1,4 +1,5 @@
 <?php
+ini_set('display_errors', 'On');
 
 include_once __DIR__ . '/../adminadmin/helpers.php';
 include_once base_path('adminadmin/middlewares.php');
