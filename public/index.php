@@ -1,10 +1,10 @@
 <?php
 ini_set('display_errors', 'On');
+include_once __DIR__ . '/../adminadmin/env.php';
 
 include_once __DIR__ . '/../adminadmin/helpers.php';
 include_once base_path('adminadmin/middlewares.php');
 include_once base_path('adminadmin/database.php');
-
 
 
 include_once base_path('routes/Route.php');

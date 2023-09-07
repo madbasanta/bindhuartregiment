@@ -5,10 +5,10 @@ return [
         'name' => 'Bindhu Art Regiment'
     ],
     'database' => [
-        'host' => 'localhost',
-        'username' => 'root',
-        'password' => 'root',
-        'database' => 'bindhuartregiment'
+        'host' => getenv('DB_HOST'),
+        'username' => getenv('DB_USERNAME'),
+        'password' => getenv('DB_PASSWORD'),
+        'database' => getenv('DB_DATABASE'),
     ],
     'sidenav' => [
         '' => [
