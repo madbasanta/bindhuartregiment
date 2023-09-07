@@ -210,7 +210,8 @@ button.explore {
         transform: scale(0.85);
 }
 div#menu_on_click {
-  background-image: url(/images/forweb.jpg);
+  /* background-image: url(/images/backgroundmenu.jpg); */
+  background-color: white;
   background-repeat: no-repeat;
   background-size: cover;
   z-index: 3;
