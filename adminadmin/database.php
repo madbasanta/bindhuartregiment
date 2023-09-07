@@ -148,8 +148,8 @@ class QueryBuilder
 
     public function create(array $data)
     {
-        $data['created_at'] ??= date('Y-m-d H:i:s');
-        $data['updated_at'] ??= date('Y-m-d H:i:s');
+        $data['created_at'] = $data['created_at'] ?? date('Y-m-d H:i:s');
+        $data['updated_at'] = $data['updated_at'] ?? date('Y-m-d H:i:s');
 
         $sql = "INSERT INTO {$this->table} SET ";
         foreach ($data as $key => $value) {
