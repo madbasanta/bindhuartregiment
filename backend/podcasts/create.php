@@ -246,17 +246,36 @@
         }
 
         new Dropzone('#audioDrop', {
-            url: '/admin/file/upload',
+            url: '/admin/file/upload/chunk',
             acceptedFiles: 'audio/*',
             maxFiles: 1,
             maxFilesize: 1024,
+            chunking: true,
+            forceChunking: true,
+            chunkSize: 1024*1024*20, // 20MB
+            parallelUploads: 5, // Number of simultaneous uploads
+            retryChunks: true,
+            retryChunksLimit: 3, // Number of times to retry failed chunks
+            uploadprogress(file, progress, bytesSent) {
+                if(file.previewElement) {
+                    file.previewElement.querySelector('.dz-progress').innerHTML = `
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: ${progress}%">
+                            </div>
+                        </div>
+                    `
+                }
+            },
             success(file, response) {
                 calculateAudioDuration(file);
                 document.getElementById('audio_file_path').value = response.file;
-                document.querySelectorAll('.dz-progress,.dz-error-message,.dz-success-mark,.dz-error-mark').forEach(item => {
-                    item.style.display = 'none';
-                });
-            }
+                if(file.previewElement) {
+                    file.previewElement.querySelectorAll('.dz-progress,.dz-error-message,.dz-error-mark').forEach(item => {
+                        item.style.display = 'none';
+                    });
+                    file.previewElement.querySelector('.dz-success-mark').innerHTML = '<i class="bi bi-check-circle-fill text-success"></i>';
+                }
+            },
         });
         new Dropzone('#thumbDrop', {
             url: '/admin/file/upload',
@@ -264,9 +283,12 @@
             maxFiles: 1,
             success(file, response) {
                 document.getElementById('thumbnail').value = response.file
-                document.querySelectorAll('.dz-progress,.dz-error-message,.dz-success-mark,.dz-error-mark').forEach(item => {
-                    item.style.display = 'none';
-                });
+                if(file.previewElement) {
+                    file.previewElement.querySelectorAll('.dz-progress,.dz-error-message,.dz-error-mark').forEach(item => {
+                        item.style.display = 'none';
+                    });
+                    file.previewElement.querySelector('.dz-success-mark').innerHTML = '<i class="bi bi-check-circle-fill text-success"></i>';
+                }
             }
         });
     })();

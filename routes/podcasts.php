@@ -3,9 +3,9 @@
 Route::get('/admin/podcasts', 'authenticated', base_path('backend/podcasts/index.php'));
 Route::get('/admin/podcasts/create', 'authenticated', base_path('backend/podcasts/create.php'));
 
-Route::post('/admin/podcasts/get-all', 'authenticated', function() {
+Route::post('/admin/podcasts/get-all', 'authenticated', function () {
     $podcasts = ORM::table('podcasts')->orderBy('created_at', 'desc')->get();
-    foreach($podcasts as &$blog) {
+    foreach ($podcasts as &$blog) {
         // load created user
         $blog->user = $blog->user_id ? ORM::table('users')->find($blog->user_id) : null;
         // trim content
@@ -14,15 +14,15 @@ Route::post('/admin/podcasts/get-all', 'authenticated', function() {
     echo json_encode($podcasts);
 });
 
-Route::post('/admin/podcasts/delete', 'authenticated', function() {
-    $res = ORM::transaction(function() {
+Route::post('/admin/podcasts/delete', 'authenticated', function () {
+    $res = ORM::transaction(function () {
         $id = $_POST['id'];
         ORM::table('podcasts')->where('id', $id)->delete();
     });
     echo json_encode($res);
 });
 
-Route::post('/admin/podcasts/create', 'authenticated', function() {
+Route::post('/admin/podcasts/create', 'authenticated', function () {
     validate([
         'title' => 'required',
         'duration' => 'required',
@@ -30,7 +30,7 @@ Route::post('/admin/podcasts/create', 'authenticated', function() {
         'thumbnail' => 'required',
         'audio_file_path' => 'required',
     ]);
-    $result = ORM::transaction(function() {
+    $result = ORM::transaction(function () {
         ORM::table('podcasts')->create([
             'title' => $_POST['title'],
             'description' => $_POST['description'],
@@ -40,7 +40,7 @@ Route::post('/admin/podcasts/create', 'authenticated', function() {
             'user_id' => auth()->id,
         ]);
     });
-    if($result['STATUS'] === 'SUCCESS') {
+    if ($result['STATUS'] === 'SUCCESS') {
         $_SESSION['post_old'] = [];
         $_SESSION['success'] = 'Podcast created successfully';
     } else {
@@ -51,10 +51,10 @@ Route::post('/admin/podcasts/create', 'authenticated', function() {
 
 // FILE UPLOAD
 
-Route::get('/admin/podcasts/file', function() {
+Route::get('/admin/podcasts/file', function () {
     $file = $_GET['file'] ?? '';
     $path = base_path('uploads/' . $file);
-    if(file_exists($path) && !is_dir($path)) {
+    if (file_exists($path) && !is_dir($path)) {
         $info = pathinfo($path);
         header('Content-Type: audio/' . $info['extension']);
         readfile($path);
@@ -63,16 +63,16 @@ Route::get('/admin/podcasts/file', function() {
         echo 'File not found';
     }
 });
-Route::post('/admin/file/upload', 'authenticated', function() {
-    if(!empty($_FILES['file'])) {
+Route::post('/admin/file/upload', 'authenticated', function () {
+    if (!empty($_FILES['file'])) {
         $file = $_FILES['file'];
         $file_name = $file['name'];
         $file_tmp = $file['tmp_name'];
         $file_size = $file['size'];
 
-        is_dir(base_path('uploads')) OR mkdir(base_path('uploads'), 0777, true);
+        is_dir(base_path('uploads')) or mkdir(base_path('uploads'), 0777, true);
 
-        if(move_uploaded_file($file_tmp, base_path('uploads/' . $file_name))) {
+        if (move_uploaded_file($file_tmp, base_path('uploads/' . $file_name))) {
             header('Content-Type: application/json');
             echo json_encode([
                 'file' => $file_name,
@@ -82,6 +82,46 @@ Route::post('/admin/file/upload', 'authenticated', function() {
             http_response_code(500);
             echo 'Unable to upload file';
         }
+    }
+});
+Route::post('/admin/file/upload/chunk', 'authenticated', function () {
+
+    $targetDir = base_path("uploads/");
+    $targetFile = $targetDir . $_POST['dzuuid'] . '.part';
+
+    if (!empty($_FILES) && isset($_POST['dzuuid'])) {
+        $chunkNumber = (int)$_POST['dzchunkindex'];
+        $totalChunks = (int)$_POST['dztotalchunkcount'];
+
+        if (!is_dir($targetDir)) {
+            mkdir($targetDir, 0777, true);
+        }
+
+        move_uploaded_file($_FILES['file']['tmp_name'], $targetFile . '.' . $chunkNumber);
+
+        // Check if all chunks have been uploaded
+        if ($chunkNumber + 1 == $totalChunks) {
+            // Get original file name and extension
+            $originalFileName = $_FILES['file']['name'];
+            $fileExtension = pathinfo($originalFileName, PATHINFO_EXTENSION);
+
+            $finalTargetFile = $targetDir . $_POST['dzuuid'] . '.' . $fileExtension;
+            for ($i = 0; $i < $totalChunks; $i++) {
+                $chunk = $targetFile . '.' . $i;
+                $data = file_get_contents($chunk);
+                file_put_contents($finalTargetFile, $data, FILE_APPEND);
+                unlink($chunk);
+            }
+
+            response([
+                'file' => basename($finalTargetFile),
+                'size' => filesize($finalTargetFile)
+            ]);
+        }
+    } else {
+        response([
+            'error' => 'Unable to upload file'
+        ], 500);
     }
 });
 

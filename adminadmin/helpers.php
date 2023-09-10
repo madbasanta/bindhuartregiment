@@ -88,3 +88,14 @@ function nDate($date, $format = 'm/d/Y') {
     $dateOjbect = date_create($date);
     return date_format($dateOjbect, $format);
 }
+
+function response($response, $status = 200)
+{
+    if(is_array($response) || is_object($response)) {
+        header('Content-Type: application/json');
+        $response = json_encode($response);
+    }
+    http_response_code($status);
+    echo $response;
+    exit;
+}
