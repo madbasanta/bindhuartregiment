@@ -62,3 +62,29 @@ function str_limit($str, $limit = 50, $end = '...') {
     }
     return $str;
 }
+
+function formatDuration($input) {
+    // Split the input string into hours, minutes, and seconds
+    list($hours, $minutes, $seconds) = explode(':', $input);
+
+    // Calculate the total duration in hours and minutes
+    $totalHours = intval($hours);
+    $totalMinutes = ($totalHours * 60) + intval($minutes);
+
+    // Format the result
+    $result = '';
+    if ($totalHours > 0) {
+        $result .= $totalHours . ' hr ';
+    }
+    if ($totalMinutes > 0 || $totalHours == 0) {
+        $result .= $totalMinutes . ' min';
+    }
+
+    return $result;
+}
+
+function nDate($date, $format = 'm/d/Y') {
+    if(empty($date)) return '';
+    $dateOjbect = date_create($date);
+    return date_format($dateOjbect, $format);
+}

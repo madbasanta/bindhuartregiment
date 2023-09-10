@@ -81,7 +81,7 @@ const routes = {
 		description: "artist",
 	},
 	podcast:{
-		template : "/podcast/podcast.html",
+		template : "/podcast/podcast",
 		title : "podcast",
 		description : "podcast",
 	},
@@ -96,7 +96,7 @@ const routes = {
 		description : "articlemainpage",
 	},
 	podcastmain:{
-		template : "/podcast/podcastmain.html",
+		template : "/podcast/podcastmain",
 		title : "podcast",
 		description : "podcastmainpage",
 	},
@@ -147,8 +147,9 @@ const locationHandler = async () => {
 	if (location.length == 0) {
 		location = "/";
 	}
+	[location, query] = location.split("?");
 	const route = routes[location] || routes["404"];
-	const html = await fetch(route.template).then((response) => response.text());
+	const html = await fetch(route.template + (query ? `?${query}` : "")).then((response) => response.text());
 	document.getElementById("content").innerHTML = html;
 	document.title = route.title;
 	document

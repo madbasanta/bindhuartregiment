@@ -158,13 +158,12 @@ class QueryBuilder
             } elseif (is_numeric($value)) {
                 $value = $value;
             } else {
-                $value = mysqli_escape_string($this->connection, $value);
+                $value = mb_convert_encoding(mysqli_escape_string($this->connection, $value), 'UTF-8');
                 $value = "'$value'";
             }
             $sql .= "$key = $value, ";
         }
         $sql = rtrim($sql, ', ');
-        // dd($sql);
         $result = $this->connection->query($sql);
         if ($result) {
             return ORM::table($this->table)->where([

@@ -16,10 +16,10 @@ return [
         ],
         'CRM' => [
             [
-                'name' => 'Articles', 'url' => '/admin/articles.*', 'icon' => 'bi bi-badge-ad',
+                'name' => 'Artists', 'url' => '/admin/artists.*', 'icon' => 'bi bi-badge-ad',
                 'children' => [
-                    ['name' => 'Create New', 'url' => '/admin/articles/create'],
-                    ['name' => 'List All', 'url' => '/admin/articles']
+                    ['name' => 'Create New', 'url' => '/admin/artists/create'],
+                    ['name' => 'List All', 'url' => '/admin/artists']
                 ]
             ],
             [

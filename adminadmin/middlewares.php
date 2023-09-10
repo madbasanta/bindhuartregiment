@@ -25,19 +25,28 @@ function validate($bag, $messages = [])
         $rules = explode('|', $rules);
         foreach($rules as $rule) {
             if(!validate_rule($field, $rule)) {
-                $error_bag[$field][] = "The {$field} field is invalid";
+                $error_bag[$field] = "The {$field} field is invalid";
                 if(isset($messages[$rule])) {
-                    $error_bag[$field][] = str_replace('{$field}', $field, $messages[$rule]);
+                    $error_bag[$field] = str_replace('{$field}', $field, $messages[$rule]);
                 }
             }
         }
     }
     if(count($error_bag) > 0) {
+        $_SESSION['post_old'] = $_POST;
         http_response_code(422);
-        echo json_encode([
-            'message' => 'Validation failed',
-            'errors' => $error_bag
-        ]);
+        // check if ajax
+        if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+            header('Content-Type: application/json');
+            echo json_encode([
+                'message' => 'Validation failed',
+                'errors' => $error_bag
+            ]);
+        } else {
+            // redirect back
+            $_SESSION['post_errors'] = $error_bag;
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
+        }
         exit;
     }
 }
@@ -46,7 +55,8 @@ function validate_rule($field, $rule)
 {
     switch($rule) {
         case 'required':
-            return !empty($_POST[$field]);
+            $trimmedString = trim(strip_tags(str_replace("\n", "", $_POST[$field] ?? '')));
+            return !empty($trimmedString);
             break;
         case 'unique':
 
