@@ -13,13 +13,11 @@
 
 <div class="wlc->podcast">
     <p class="wlc->podcast">
-        Welcome to our podcast section, where we explore the world of community-based art, collaborative projects,
-        poetry, and more. In this series, we'll take you on a journey through the creative minds of artists and poets
-        who are using their ideas to create something. We'll hear from poets, visual artists, performance artist ,
-        musician , filmmakers and more as they discuss their work and the impact it has on the world around them. From
-        collaborative art projects to poetry slams, we'll delve into the many ways that art can bring people together
-        and inspire change. Join us as we explore the power of creativity to transform the scene of art in our
-        community.
+        Let's amplify our Voice <br><br>
+        We intend to meet and talk with creators employing art as reflection of individuals and collectives to inspire
+        positivity and awareness. We highly appreciate the creator's abilities to respond to the world around us and
+        truly grateful for creating impacts in needed circumstances. In our podcast we feature artists and communities
+        who are overshadowed in contemporary times. Let's together celebrate the freedom of expression of all artists.
     </p>
 </div>
 
