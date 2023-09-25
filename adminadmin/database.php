@@ -173,6 +173,30 @@ class QueryBuilder
         throw new Exception($this->connection->error);
     }
 
+    public function update(array $data)
+    {
+        $data['updated_at'] = date('Y-m-d H:i:s');
+        $sql = "UPDATE {$this->table} SET ";
+        foreach ($data as $key => $value) {
+            if (is_null($value)) {
+                $value = 'NULL';
+            } elseif (is_numeric($value)) {
+                $value = $value;
+            } else {
+                $value = mb_convert_encoding(mysqli_escape_string($this->connection, $value), 'UTF-8');
+                $value = "'$value'";
+            }
+            $sql .= "$key = $value, ";
+        }
+        $sql = rtrim($sql, ', ');
+        $sql .= " WHERE {$this->whereClause}";
+        $result = $this->connection->query($sql);
+        if ($result) {
+            return $this->first();
+        }
+        throw new Exception($this->connection->error);
+    }
+
     public function delete()
     {
         $sql = "DELETE FROM {$this->table}" . ($this->whereClause ? " WHERE {$this->whereClause}" : '');

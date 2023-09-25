@@ -4,7 +4,7 @@
     overflow: hidden;
 }
 .semi_circle {
-    background: white;
+    background: black;
     height: 200vh;
     border-radius: 50%;
     width: 150%;
@@ -26,7 +26,7 @@ h1.pnc {
 h1.question_bill {
     font-size: 65px;
     font-family: 'Mazin';
-    color: white;
+    color: black;
     text-align: start;
 }
 .question_bill {
@@ -42,7 +42,7 @@ img.billboardarticle_image {
     height: 600px;
 }
 p.words {
-    color: white;
+    color: black;
     font-family: 'Mazin';
     font-size: 25px;
     text-align: justify;
@@ -51,7 +51,7 @@ p.words {
     margin: 7%;
 }
 h1.findm_ins {
-    color: white;
+    color: black;
     font-family: 'poppins';
     font-size: 45px;
     font-weight: bold;
@@ -63,7 +63,7 @@ h1.findm_ins {
     font-family: 'Mazin';
     font-size: 22px;
     font-weight: lighter;
-    color: white;
+    color: black;
     margin: 2%;
 }
 .info_article_words{
@@ -93,7 +93,7 @@ button.TH {
     text-decoration: none;
     border: none;
     border-radius: 0.5em;
-    color: white;
+    color: black;
     box-shadow: 0.5em 0.5em 0.5em rgba(0, 0, 0, 0.3);
   }
   
@@ -105,7 +105,7 @@ button.TH {
     top: 0;
     left: 0;
     /* background: linear-gradient(135deg, rgba(33,33,33,1) 0%, rgba(33,33,33,1) 50%, rgba(150,4,31,1) 50%, rgba(191,4,38,1) 60%); */
-    background: linear-gradient(135deg, black 0%, black 50%, WHITE 50%, WHITE 60%);
+    background: linear-gradient(135deg, black 0%, black 50%, black 50%, black 60%);
     border-radius: 0 0 0.5em 0;
     box-shadow: 0.2em 0.2em 0.2em rgba(0, 0, 0, 0.3);
     transition: 0.3s;

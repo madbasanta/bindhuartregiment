@@ -8,7 +8,7 @@
     font-family: 'Antigone';
     font-size: 48px;
     font-weight: bold;
-    color: white;
+    color: black;
 }
 .artist_profile_image_billboard{
     display: flex;
@@ -21,7 +21,7 @@
     font-family: 'Mazin';
     font-size: 24px;
     font-weight: lighter;
-    color: white;
+    color: black;
     text-align: justify;
 }
 .artist_image{
@@ -72,7 +72,7 @@
     font-family: 'Mazin';
     font-size: 26px;
     font-weight: lighter;
-    color:white;
+    color:black;
 
 }
 .artist_title h6{
@@ -88,7 +88,7 @@
     margin-bottom: 5%;
 }
 .artist_info p{
-    color: white;
+    color: black;
     font-family: 'Mazin';
     font-size: 23px;
     font-weight: lighter;
@@ -101,7 +101,7 @@
 
 }
 .readmart{
-    color: white;
+    color: black;
     text-decoration: underline;
     font-family: 'Mazin';
     font-weight: medium;
@@ -120,7 +120,7 @@
     font-family: 'Antigone';
     font-size: 40px;
     font-weight: lighter;
-    color: white;
+    color: black;
 }
 .artist_image_art{
     display: flex;
@@ -226,7 +226,7 @@
     font-family: 'Mazin';
     font-weight: lighter;
     font-size: 22px;
-    color: white;
+    color: black;
     text-align: justify;
 }
 .artistmain_content_art{
@@ -239,7 +239,7 @@
     font-family: 'Mazin';
     font-weight: lighter;
     font-size: 22px;
-    color: white;
+    color: black;
     text-align: justify;
     margin: 3%;
     
@@ -255,7 +255,7 @@
     font-family: 'Mazin';
     font-weight: lighter;
     font-size: 17px;
-    color: white;
+    color: black;
     text-align: justify;
 
 }

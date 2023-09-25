@@ -2,6 +2,46 @@
 
 Route::get('/admin/podcasts', 'authenticated', base_path('backend/podcasts/index.php'));
 Route::get('/admin/podcasts/create', 'authenticated', base_path('backend/podcasts/create.php'));
+Route::get('/admin/podcasts/edit', 'authenticated', function() {
+    validate([
+        'id' => 'required'
+    ]);
+}, base_path('backend/podcasts/edit.php'));
+
+Route::post('/admin/podcasts/edit', 'authenticated', function() {
+    validate([
+        'id' => 'required',
+        'title' => 'required',
+        'duration' => 'required',
+        'description' => 'required',
+        'thumbnail' => 'required',
+        'audio_file_path' => 'required',
+    ]);
+
+    $podcast = ORM::table('podcasts')->find($_GET['id']);
+    if(empty($podcast)) {
+        http_response_code(404);
+        exit;
+    }
+    
+    $result = ORM::transaction(function () use ($podcast) {
+        ORM::table('podcasts')->where('id', $podcast->id)->update([
+            'title' => $_POST['title'],
+            'description' => $_POST['description'],
+            'thumbnail' => $_POST['thumbnail'],
+            'audio_file_path' => $_POST['audio_file_path'],
+            'duration' => $_POST['duration'],
+        ]);
+    });
+
+    if ($result['STATUS'] === 'SUCCESS') {
+        $_SESSION['post_old'] = [];
+        $_SESSION['success'] = 'Podcast updated successfully';
+    } else {
+        $_SESSION['error'] = $result['MESSAGE'];
+    }
+    header('Location: /admin/podcasts/edit?id=' . $_GET['id']);
+});
 
 Route::post('/admin/podcasts/get-all', 'authenticated', function () {
     $podcasts = ORM::table('podcasts')->orderBy('created_at', 'desc')->get();

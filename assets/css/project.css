@@ -1,10 +1,10 @@
 .main_billboard_text{
-    color: white;
+    color: black;
     font-family: antigone;
     font-weight: bold;
     font-size: 60px;
-    margin-left: 25%;
-    margin-top: 6%;
+    /* margin-left: 25%; */
+    /* margin-top: 6%; */
     
 }
 p.f_n_2 {
@@ -35,16 +35,37 @@ img.collab_1 {
     border-radius: 0px;
 }
 img.collab_2 {
-    width: 350px;
+    /* width: 350px; */
     border-radius: 0px;
 }
+.img_pro>img {
+    max-width: 100%;
+}
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  
+  .grid-item {
+    /* background-color: #f2f2f2; */
+    padding: 20px;
+    text-align: center;
+  }
+  
+  /* Media query for small screens */
+  @media (max-width: 768px) {
+    .grid-container {
+      grid-template-columns: 1fr; /* Switch to a single column layout */
+    }
+  }
 .collaboration_container {
     display: flex;
-    justify-content: space-evenly;
-    margin: 7%;
+    justify-content: center;
+    /* margin: 7%; */
     flex-wrap: wrap;
-    gap: 10%;
-    
+    /* gap: 10%; */
+    padding: 20px;
 }
 .bill_nav {
     display: flex;
@@ -52,25 +73,25 @@ img.collab_2 {
     margin: 10%;
 }
 a.F\&P {
-    color: white;
+    color: black;
     text-decoration: none;
     font-size: 22px;
     font-family: 'Jost';
 }
 a.Poetry {
-    color: white;
+    color: black;
     text-decoration: none;
     font-size: 22px;
     font-family: 'Jost';
 }
 a.Comm_project {
-    color: white;
+    color: black;
     text-decoration: none;
     font-size: 22px;
     font-family: 'Jost';
 }
 a.collaboration_main_bill {
-    color: white;
+    color: black;
     text-decoration: none;
     font-size: 22px;
     font-family: 'Jost';
@@ -79,13 +100,13 @@ p.collab_text_main_1 {
     font-family: 'Mazin';
     font-size: 20px;
     font-weight: bold;
-    color: white;
+    color: black;
     margin: 10%;
 
 }
 a.collaboration {
     text-decoration: none;
-    color: white;
+    color: black;
     font-family: 'Mazin';
     font-size: 20px;
     font-weight: bold;
@@ -95,7 +116,7 @@ p.collab_text_main_2 {
     font-family: 'Mazin';
     font-size: 20px;
     font-weight: bold;
-    color: white;
+    color: black;
     margin: 10%;
 
 }
@@ -103,7 +124,7 @@ p.collab_text_main_2 {
     font-family: 'Mazin';
     font-size: 20px;
     font-weight: bold;
-    color: white;
+    color: black;
     margin: 10%;
 
 }
@@ -121,7 +142,7 @@ p.collab_text_main_2 {
     font-family: 'Antigone';
     font-weight: bold;
     font-size: 45px;
-    color: white;
+    color: black;
 }
 .oneproject_bill{
     text-align: center;
@@ -133,7 +154,7 @@ p.collab_text_main_2 {
 }
 .oneproject_bill_para p{
     font-family: 'Mazin';
-    color: white;
+    color: black;
     font-size: 22px;
     
 }
@@ -228,23 +249,23 @@ p.collab_text_main_2 {
         margin: 0.5%;
     }
     img.collab_1 {
-        width: 140px;
-        height: 172.17px;
+        /* width: 140px; */
+        /* height: 172.17px; */
         border-radius: 0%;
     }
     img.collab_2 {
-        width: 140px;
-        height: 172.17px;
+        /* width: 140px; */
+        /* height: 172.17px; */
         border-radius: 0%;
     }
-    .collaboration_container{
+    /* .collaboration_container{
         margin: 1%;
         display: flex;
         justify-content: space-evenly;
         flex-wrap: wrap;
-    }
+    } */
     .collab_1{
-        width: 150px;
+        /* width: 150px; */
     }
     p.collab_text_main_1 {
         font-size: 12px;
@@ -338,18 +359,18 @@ p.collab_text_main_2 {
         height: 35vh
     }
     .main_billboard_text {
-        margin-top: 25%;
+        /* margin-top: 25%; */
         margin-left: 2%;
     }
     img.collab_1 {
         width: 300px;
     }
     img.collab_2 {
-        width: 300px;
+        /* width: 300px; */
     }
-    .collaboration_container{
+    /* .collaboration_container{
         margin-left: 10%;
-    }
+    } */
 
 }
 

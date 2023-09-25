@@ -11,7 +11,7 @@
 .main_title_bar h1{
     font-size: 80px;
     font-family: 'Antigone';
-    color: white;
+    color: black;
     font-weight: bold;
 }
 span.whatis{
@@ -28,7 +28,7 @@ span.regiment{
 }
 .bindhuartregiment_body{
     margin: 7%;
-    color: white;
+    color: black;
 }
 .bindhuartregiment_body p{
     font-family: 'Mazin';
@@ -46,7 +46,7 @@ span.regiment{
     font-family: 'Antigone';
     font-size: 80px;
     font-weight: bold;
-    color: white;
+    color: black;
 }
 .su_mainbody_container{
     margin: 7%;
@@ -55,7 +55,7 @@ span.regiment{
     font-family: 'Mazin';
     font-size: 22px;
     font-weight: lighter;
-    color: white;
+    color: black;
 }
 @media only screen and (max-width: 500px){
     .billboard_image img{

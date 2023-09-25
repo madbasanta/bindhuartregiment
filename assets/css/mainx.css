@@ -38,7 +38,7 @@ html {
     overflow-x: hidden;
 }
 body{
-    background-color: black;
+    /* background-color: black; */
     margin: 0;
     position: relative;
     overflow-x: hidden;
@@ -65,9 +65,9 @@ button.explore {
   position: relative;
   padding: 1em 1.8em;
   outline: none;
-  border: 1px solid white;
+  border: 1px solid black;
   background: transparent;
-  color: white;
+  /* color: white; */
   text-transform: uppercase;
   letter-spacing: 2px;
   font-size: 15px;
@@ -146,7 +146,7 @@ button.explore {
  button.explore:active {
   background: #ae00af;
   background: linear-gradient(to top right, #ae00af, #001eff);
-  color: #bfbfbf;
+  /* color: #bfbfbf; */
   box-shadow: 0 0 8px #ae00ff, 0 0 8px #001eff, 0 0 8px #ae00ff;
   transition: 0.1s;
  }
@@ -170,7 +170,7 @@ button.explore {
     display: flex;
     align-items: center;
     background: transparent;
-    color: #f5f5f5;
+    /* color: #f5f5f5; */
     cursor: pointer;
 }
   
@@ -352,7 +352,7 @@ img.billboardmainimage{
 }
 h1.art_and_literature {
   font-family: 'Antigone';
-  color: white;
+  /* color: white; */
   font-size: 80px;
   text-align: center;
 }
@@ -581,7 +581,7 @@ img.arrowimgafter{
   }
 }
 .cta {
-    color: white;
+    /* color: white; */
     border: none;
     background: none;
   }
@@ -609,7 +609,7 @@ img.arrowimgafter{
   
 .hover-underline-animation {
     position: relative;
-    color: WHITE;
+    /* color: WHITE; */
     padding-bottom: 20px;
   }
 .hover-underline-animation:after {
@@ -658,7 +658,7 @@ img.arrowimgafter{
 } */
 p.explain_naade{
     font-family: 'Mazin';
-    color: white;
+    /* color: white; */
     font-weight: lighter;
     text-align: justify;
     font-size: 26px;
@@ -1040,7 +1040,7 @@ h4.featured {
 }
 
 h3.collab{
-    color: white;
+    /* color: white; */
     font-size: 75px;
     font-family: 'Antigone';
     font-weight: bold;
@@ -1558,24 +1558,26 @@ a.twitter{
   font-size: 42px;
 
 }
+
+
 /* for mobile devices */
 @media only screen and (max-width: 500px) {
   body{
     /* background-color: rgb(46, 46, 46); */
-    background-color: black;
+    /* background-color: black; */
   }
   nav {
      height: 75px;
      position: relative;
      /* background: rgb(46,46,46); */
-     background-color: black;
+     /* background-color: black; */
   }
   nav.navbar_cover {
     height: 75px;
     border-bottom: solid white 1px;
     position: fixed;
     z-index: 100;
-    background: black;
+    background: white;
   }
    .background {
     display: none;
@@ -1596,8 +1598,8 @@ a.twitter{
         height: 25px;
         font-size: 6.1px;
         font-weight: bold;
-        border: 1px solid white;
-        color: white;
+        border: 1px solid black;
+        /* color: white; */
     }
     button.explore:hover {
       box-shadow: 0 0 10px white, 0 0 25px white, 0 0 50px white;
@@ -1643,7 +1645,7 @@ a.twitter{
     }
     h1.art_and_literature {
       font-family: 'Antigone';
-      color: white;
+      /* color: white; */
       font-size: 45px;
       text-align: center;
     }

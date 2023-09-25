@@ -4,25 +4,26 @@ body{
 .main_bill--ab{
     height: fit-content;
     width: 100%;
-    margin: 10%;
+    margin: 5% 0;
 }
 h1.about{
-    margin-left: 20%;
-    color: white;
+    /* margin-left: 20%; */
+    color: black;
     font-family: 'Antigone';
     font-size: 50px;
     font-weight: bold;
+    text-align: center;
 }
 h1.the{
     margin-left: 35%;
-    color: white;
+    color: black;
     font-family: 'Antigone';
     font-size: 50px;
     font-weight: bold;
 }
 h1.team{
     margin-left: 45%;
-    color: white;
+    color: black;
     font-family: 'Antigone';
     font-size: 50px;
     font-weight: bold;
@@ -31,7 +32,7 @@ h1.team{
     margin: 7%;
 }
 .about_para{
-    color: white;
+    color: black;
     font-family: 'Mazin';
     font-size: 25px;
     text-align: justify;
@@ -43,13 +44,13 @@ h1.team{
     margin: 7%;
 }
 h1.name-ab{
-   color: white;
+   color: black;
    font-family: 'Antigone';
    font-weight: bold;
    font-size: 35px;
 }
 h3.desc-ab{
-    color: white;
+    color: black;
     font-family: 'Mazin';
     text-decoration: underline;
     font-size: 30px;
@@ -61,7 +62,7 @@ h3.desc-ab{
     gap: 10%;
 }
 .para--saugat{
-    color: white;
+    color: black;
     font-size: 25px;
     font-family: 'Mazin';
     text-align: justify;
@@ -72,7 +73,7 @@ h3.desc-ab{
 
 }
 .para--poojan{
-    color: white;
+    color: black;
     font-size: 25px;
     font-family: 'Mazin';
     text-align: justify;

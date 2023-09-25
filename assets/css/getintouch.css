@@ -4,7 +4,7 @@
 h2.gih {
     font-size: 70px;
     font-family: 'Antigone';
-    color: white;
+    color: black;
     align-self: center;
 }
 .getintouch_main_text {
@@ -15,7 +15,7 @@ h2.gih {
 
 }
 p.text_bill {
-    color: white;
+    color: black;
     font-family: Mazin;
     margin: 10%;
     font-size :22px;
@@ -29,7 +29,7 @@ p.text_bill {
   
   .wave-group .input {
     font-size: 16px;
-    color: white;
+    color: black;
     font-family: 'Poppins';
     padding: 10px 10px 10px 5px;
     display: block;
@@ -44,7 +44,7 @@ p.text_bill {
   }
   
   .wave-group .label {
-    color: white;
+    color: black;
     font-family: Poppins;
     font-size: 18px;
     font-weight: normal;
@@ -64,7 +64,7 @@ p.text_bill {
   .wave-group .input:valid ~ label .label-char {
     transform: translateY(-20px);
     font-size: 14px;
-    color: WHITE;
+    color: black;
   }
   
   .wave-group .bar {
@@ -130,7 +130,7 @@ p.text_bill {
     font-size: 15px;
     font-weight: light;
     letter-spacing: 0.05em;
-    color: white;
+    color: black;
 }
    
 .cta--s svg {
@@ -140,7 +140,7 @@ p.text_bill {
     fill: none;
     stroke-linecap: round;
     stroke-linejoin: round;
-    stroke: white;
+    stroke: black;
     stroke-width: 2;
     transform: translateX(-5px);
     transition: all 0.3s ease;
@@ -182,7 +182,7 @@ input[type=number] {
         font-size: 48px;
     }
     .main_billboard{
-        width: 85%;
+        /* width: 85%; */
     }
     .getintouch_main_text{
       height: 30vh;
@@ -194,7 +194,7 @@ input[type=number] {
         font-size: 60px;
     }
     .main_billboard{
-        width: 85%;
+        /* width: 85%; */
     }
 }
   

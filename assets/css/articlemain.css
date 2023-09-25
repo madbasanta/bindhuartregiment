@@ -7,7 +7,7 @@ a{
 h1.tell {
     font-family: 'Antigone';
     font-size: 70px;
-    color: white;
+    color: black;
 }
 .billboard_1_article {
     display: flex;
@@ -86,19 +86,19 @@ img.tarko {
     justify-content: center;
 }
 p.title {
-    color: white;
+    color: black;
     font-size: 22px;
     font-family: 'Mazin';
 }
 p.date {
-    color: white;
+    color: black;
     font-size: 22px;
-    font-family: 'Mazin';color: white;
+    font-family: 'Mazin';color: black;
     font-size: 22px;
     font-family: 'Mazin';
 }
 a.readmore {
-    color: white;
+    color: black;
     font-size: 22px;
     font-family: 'Mazin';
 }

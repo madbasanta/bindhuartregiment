@@ -42,7 +42,7 @@ img.pod_bill{
     font-family: 'Mazin';
     font-weight: lighter;
     font-size: 22px;
-    color: white;  
+    /* color: white;   */
 }
 .audio-player {
     width: 900px;

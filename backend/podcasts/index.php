@@ -67,7 +67,7 @@
                 moment(item.created_at).format('MM/DD/YYYY hh:mm A'),
                 item.title, item.description, item.duration,
                 item.user ? item.user.name : '',
-                `<a href="/admin/podcasts/edit/${item.id}" title="Edit" class="btn btn-icon btn-sm"><i class="bi bi-pencil-square"></i></a>
+                `<a href="/admin/podcasts/edit?id=${item.id}" title="Edit" class="btn btn-icon btn-sm"><i class="bi bi-pencil-square"></i></a>
                 <a data-id="${item.id}" href="/admin/podcasts/delete" title="Delete" class="blog--delete btn btn-icon btn-sm text-danger"><i class="bi bi-trash"></i></a>`
             ]));
         }

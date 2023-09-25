@@ -45,7 +45,7 @@ function validate($bag, $messages = [])
         } else {
             // redirect back
             $_SESSION['post_errors'] = $error_bag;
-            header('Location: ' . $_SERVER['HTTP_REFERER']);
+            header('Location: ' . ($_SERVER['HTTP_REFERER'] ?? '/admin'));
         }
         exit;
     }
@@ -55,7 +55,7 @@ function validate_rule($field, $rule)
 {
     switch($rule) {
         case 'required':
-            $trimmedString = trim(strip_tags(str_replace("\n", "", $_POST[$field] ?? '')));
+            $trimmedString = trim(strip_tags(str_replace("\n", "", $_POST[$field] ?? $_GET[$field] ?? '')));
             return !empty($trimmedString);
             break;
         case 'unique':

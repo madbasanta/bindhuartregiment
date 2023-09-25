@@ -4,7 +4,7 @@ a{
 h1.tell {
   font-family: 'Poppins';
   font-size: 70px;
-  color: white;
+  color: black;
 }
 .billboard_1_pod {
   display: flex;
@@ -36,13 +36,13 @@ p.subscribe {
   margin: 5%;
 }
 p.wlc-\>podcast {
-  color: white;
+  color: black;
   font-family: 'Mazin';
   font-size: 27px;
   text-align: justify;
 }
 h1.latest-\>podcast {
-  color: white;
+  color: black;
   font-family: 'Jost';
   font-weight: 500;
   font-size: 24px;
@@ -93,7 +93,7 @@ h1.latest-\>podcast {
 }
 .pod_h1{
   background-color: #250A3A;
-  color: white;
+  color: black;
   font-family: 'Mazin';
   font-size: 15px;
   font-weight: lighter;
@@ -107,7 +107,7 @@ h1.latest-\>podcast {
 }
 .pod_h2{
   background-color: #625187;
-  color: white;
+  color: black;
   font-family: 'Mazin';
   font-size: 12px;
   font-weight: lighter;
@@ -124,7 +124,7 @@ h1.latest-\>podcast {
   font-family: 'Mazin';
   font-size: 22px;
   font-weight: lighter;
-  color: white;
+  color: black;
 }
 .allep_title{
   display: flex;
@@ -135,11 +135,11 @@ h1.latest-\>podcast {
   font-family: 'Antigone';
   font-size: 32px;
   font-weight: bold;
-  color: white;
+  color: black;
 }
 .poet1 {
     display: flex;
-    border: solid 2px white;
+    border: solid 2px black;
     margin: 2%;
     border-radius: 25px;
 }
@@ -156,13 +156,13 @@ h1.latest-\>podcast {
   margin: 2%;
 }
 .poettitle h4{
-  color: white;
+  color: black;
   font-family: 'Mazin';
   font-weight: bold;
   font-size: 22px;
 }
 .poetsubtitle h6{
-  color: white;
+  color: black;
   font-size: 17px;
   font-family: 'Mazin';
   font-weight: bold;
@@ -173,7 +173,7 @@ h1.latest-\>podcast {
 .podpoetinfo p{
   font-family: 'Mazin';
   font-size: 22px;
-  color: white;
+  color: black;
 }
 .poet_listen_pods{
   width: 300px;
@@ -200,13 +200,13 @@ h1.latest-\>podcast {
   margin: 2%;
 }
 .lis_pod p{
-  color: white;
+  color: black;
   font-family: 'Mazin';
   font-weight: bold;
   font-size: 24px;
 }
 .poet_listen_pods p{
-  color: white;
+  color: black;
   font-family: 'Mazin';
   font-weight: bold;
   font-size: 24px;
