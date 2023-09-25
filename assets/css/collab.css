@@ -16,15 +16,15 @@ textarea{
     justify-content: center;
 }
 h1.collab_title {
-    color: white;
+    color: black;
     text-align: center;
     font-family: 'Poppins';
     font-weight: bold;
     font-size: 40px;
 }
 p.collab_info {
-    color: white;
-    font-size: 15px;
+    color: black;
+    font-size: 20px;
     font-family: 'Poppins';
     text-align: justify;
     width: 50%;
