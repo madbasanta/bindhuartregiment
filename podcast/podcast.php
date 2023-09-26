@@ -74,7 +74,10 @@
         <audio controls>
             <source src="/uploads/<?= $podcast->audio_file_path ?>" type="audio/mpeg">
         </audio>
+        <!-- <iframe title="Embed Player" width="100%" height="188px" src="https://embed.acast.com/61a5495fd20fb600197c82fd/61a5496c32c9c0001a811f1b" scrolling="no" frameBorder="0" style="border:none;overflow:hidden;"></iframe> -->
+        <!-- <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1605928965&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/bar-nepal" title="Bindhu art regiment" target="_blank" style="color: #cccccc; text-decoration: none;">Bindhu art regiment</a> · <a href="https://soundcloud.com/bar-nepal/bindhu-art-regiment-weekly" title="Theatre |  contemporary art scene | politics | Expression" target="_blank" style="color: #cccccc; text-decoration: none;">Theatre |  contemporary art scene | politics | Expression</a></div> -->
     </div>
+
 </div>
 
 <style>

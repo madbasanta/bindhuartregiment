@@ -85,8 +85,18 @@ const routes = {
 		title : "podcast",
 		description : "podcast",
 	},
-	article:{
-		template : "/article/article.html",
+	article1:{
+		template : "/article/article1.html",
+		title : "article",
+		description : "article",
+	},
+	article2:{
+		template : "/article/article2.html",
+		title : "article",
+		description : "article",
+	},
+	article3:{
+		template : "/article/article3.html",
 		title : "article",
 		description : "article",
 	},
