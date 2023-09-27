@@ -62,7 +62,8 @@ img.pod_bill{
 
 @media only screen and (max-width: 500px){
     h1.pnc {
-        font-size: 35px;
+        font-size: 30px;
+        width: 90%;
     }
     .semi_circle { 
         top: -140vh;
@@ -71,7 +72,8 @@ img.pod_bill{
         margin-top: 150%;
     }
     .art_bill {
-        height: 63vh;
+        height: 50vh;
+        margin-bottom: 10vh;
     }
     img.pod_bill {
         width: 900px;

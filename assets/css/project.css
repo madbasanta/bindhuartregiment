@@ -101,7 +101,7 @@ p.collab_text_main_1 {
     font-size: 20px;
     font-weight: bold;
     color: black;
-    margin: 10%;
+    /* margin: 10%; */
 
 }
 a.collaboration {
@@ -117,7 +117,7 @@ p.collab_text_main_2 {
     font-size: 20px;
     font-weight: bold;
     color: black;
-    margin: 10%;
+    /* margin: 10%; */
 
 }
 .collab_news{

@@ -47,7 +47,7 @@ p.words,
     color: black;
     font-family: 'Mazin';
     font-size: 25px;
-    text-align: justify;
+    /* text-align: justify; */
 }
 .words h1 {
     font-size: 40px;
@@ -131,6 +131,12 @@ button.TH {
     margin: 6%;
 }
 @media only screen and (max-width: 500px){
+    .words h1 {
+        font-size: 25px;
+    }
+    .words p {
+        font-size: 20px;
+    }
     /* .cover_arrowdown {
         display: none;
     }

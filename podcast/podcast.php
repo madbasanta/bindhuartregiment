@@ -48,14 +48,13 @@
 
 
 <div class="content_wrap">
-    <div class="art_bill">
-        <div class="semi_circle">
-            <div class="pnc_cov" style="margin-top: 25%;">
-                <h1 class="pnc">
+    <div class="art_bill" style="display: flex; justify-content: center; align-items: center;overflow: visible;">
+        <div class="semi_circle" style="position: absolute;z-index: -1;">
+            
+        </div>
+        <h1 class="pnc">
                     <?= wordwrap($podcast->title, 20, '<br>') ?>
                 </h1>
-            </div>
-        </div>
     </div>
     <div class="img_bill">
         <img src="/uploads/<?= $podcast->thumbnail ?>" alt="podcastimgbill" class="pod_bill">
