@@ -255,6 +255,9 @@ class ORM
 
     public static function schema($sqlStatement)
     {
+        if(empty($sqlStatement)) {
+            return null;
+        }
         $orm = new ORM();
         $result = $orm->connection->query($sqlStatement);
         if (!$result) {

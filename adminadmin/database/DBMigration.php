@@ -174,8 +174,17 @@ class DBMigration
     {
         $sql = '';
 
+        $existingColumns = ORM::table('information_schema.columns')
+            ->where('table_name', $this->tableName)
+            ->where('table_schema', config('database.database'))
+            ->get();
+        $existingColumns = array_column($existingColumns, 'COLUMN_NAME');
+
         foreach ($this->newColumns as $newColumn) {
-            $sql .= "ALTER TABLE `$this->tableName` ADD COLUMN IF NOT EXISTS `{$newColumn['name']}` {$newColumn['type']}";
+            if(in_array($newColumn['name'], $existingColumns)) {
+                continue;
+            }
+            $sql .= "ALTER TABLE `$this->tableName` ADD COLUMN `{$newColumn['name']}` {$newColumn['type']}";
 
             if (!empty($newColumn['options'])) {
                 $sql .= ' ' . implode(' ', $newColumn['options']);
