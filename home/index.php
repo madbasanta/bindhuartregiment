@@ -177,7 +177,7 @@
                     <p><?= str_limit($recent->shortdesc, 200) ?></p>
                 </div>
                 <div class="poet_listen_pods" style="text-align: center;">
-                    <a href="#podcast?id=4" style="display: flex;align-items:center">
+                    <a href="#podcast?id=<?= $recent->id ?>" style="display: flex;align-items:center">
                         <p>
                             LISTEN PODS
                         </p>
