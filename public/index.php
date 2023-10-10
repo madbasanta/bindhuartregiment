@@ -10,6 +10,7 @@ include_once base_path('adminadmin/database.php');
 
 include_once base_path('routes/Route.php');
 include_once base_path('routes/webRoutes.php');
+include_once base_path('routes/authentication.php');
 include_once base_path('routes/blogs.php');
 include_once base_path('routes/podcasts.php');
 include_once base_path('routes/artists.php');
