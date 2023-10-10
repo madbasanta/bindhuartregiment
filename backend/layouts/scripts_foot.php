@@ -4,11 +4,14 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js" referrerpolicy="no-referrer"></script>
   <script src="/assets/vendor/chart.js/chart.umd.js"></script>
   <script src="/assets/vendor/echarts/echarts.min.js"></script>
-  <script src="/assets/vendor/quill/quill.min.js"></script>
-  <script src="/assets/vendor/simple-datatables/simple-datatables.js"></script>
+  <!-- <script src="/assets/vendor/quill/quill.min.js"></script> -->
+  <!-- <script src="/assets/vendor/quill/imageDrop.js"></script> -->
   <script src="/assets/vendor/tinymce/tinymce.min.js"></script>
+  <script src="/assets/vendor/tinymce/tinymceinit.js"></script>
   <script src="/assets/vendor/php-email-form/validate.js"></script>
-
+  <script src="https://unpkg.com/dropzone@6.0.0-beta.1/dist/dropzone-min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+  <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
   <!-- Template Main JS File -->
   <script src="/assets/js/main.js"></script>
 
@@ -33,6 +36,7 @@
   			callback.call(target, event);
   		});
   	}
+
   	function addEventListenerId(forId, ev, callback) {
   		document.addEventListener(ev, function(event) {
   			let target = null;

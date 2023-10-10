@@ -1560,6 +1560,11 @@ a.twitter{
 }
 
 
+img.img-fluid {
+  max-width: 100%;
+  height: auto;
+}
+
 /* for mobile devices */
 @media only screen and (max-width: 500px) {
   body{

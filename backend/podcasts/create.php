@@ -1,53 +1,4 @@
 <?php include_once base_path('backend/layouts/meta.php') ?>
-<link href="https://unpkg.com/dropzone@6.0.0-beta.1/dist/dropzone.css" rel="stylesheet" type="text/css" />
-<style>
-    .dropzone {
-        width: 98%;
-        margin: 1%;
-        border: 2px dashed #3498db !important;
-        border-radius: 5px;
-        transition: 0.2s;
-        min-height: 100px;
-    }
-
-    .dropzone.dz-drag-hover {
-        border: 2px solid #3498db !important;
-    }
-
-    .dz-message.needsclick img {
-        width: 50px;
-        display: block;
-        margin: auto;
-        opacity: 0.6;
-        margin-bottom: 15px;
-    }
-
-    span.plus {
-        display: none;
-    }
-
-    .dropzone.dz-started .dz-message {
-        display: inline-block !important;
-        width: 120px;
-        float: right;
-        border: 1px solid rgba(238, 238, 238, 0.36);
-        border-radius: 30px;
-        height: 120px;
-        margin: 16px;
-        transition: 0.2s;
-    }
-
-    .dropzone.dz-started .dz-message span.text {
-        display: none;
-    }
-
-    .dropzone.dz-started .dz-message span.plus {
-        display: block;
-        font-size: 70px;
-        color: #AAA;
-        line-height: 110px;
-    }
-</style>
 
 <?php include_once base_path('backend/layouts/nav.php') ?>
 
@@ -96,7 +47,6 @@
                                                 <div class="text-danger"><?= $_SESSION['post_errors']['title'] ?></div>
                                             <?php endif; ?>
                                         </div>
-
                                         <div class="col-2 mb-3">
                                             <label for="inputDur" class="form-label">Duration</label>
                                             <input type="text" readonly name="duration" class="form-control" value="<?= old('duration') ?>" id="inputDur">
@@ -104,19 +54,44 @@
                                                 <div class="text-danger"><?= $_SESSION['post_errors']['duration'] ?></div>
                                             <?php endif; ?>
                                         </div>
-
+                                        <div class="col-10 mb-3">
+                                            <label for="inputShortdesc" class="form-label">Short Description</label>
+                                            <textarea rows="2" name="shortdesc" class="form-control" id="inputShortdesc"><?= old('shortdesc') ?></textarea>
+                                            <?php if (isset($_SESSION['post_errors']['shortdesc'])) : ?>
+                                                <div class="text-danger"><?= $_SESSION['post_errors']['shortdesc'] ?></div>
+                                            <?php endif; ?>
+                                        </div>
+                                        <div class="col-2 mb-3">
+                                            <label for="inputDate" class="form-label">Podcast Date</label>
+                                            <input type="date" name="podcast_date" class="form-control" value="<?= old('podcast_date') ?>" id="inputDate">
+                                            <?php if (isset($_SESSION['post_errors']['podcast_date'])) : ?>
+                                                <div class="text-danger"><?= $_SESSION['post_errors']['podcast_date'] ?></div>
+                                            <?php endif; ?>
+                                        </div>
                                         <div class="col-12">
                                             <label for="inputContent" class="form-label">Description</label>
-                                            <textarea name="description" id="podcastDesc" style="display: none;"></textarea>
-                                            <div class="card">
-                                                <div class="card-body p-0">
-                                                    <div class="quill-editor-description"><?= old('description') ?></div>
-                                                </div>
-                                            </div>
+                                            <textarea name="description" id="podcastDesc"><?= old('description') ?></textarea>
                                             <?php if (isset($_SESSION['post_errors']['description'])) : ?>
                                                 <div class="text-danger"><?= $_SESSION['post_errors']['description'] ?></div>
                                             <?php endif; ?>
                                         </div>
+
+                                        
+                                        <div class="col-6 mb-3">
+                                            <label>Soundcloud URL</label>
+                                            <input type="url" name="soundcloud_url" class="form-control" value="<?= old('soundcloud_url') ?>">
+                                            <?php if (isset($_SESSION['post_errors']['soundcloud_url'])) : ?>
+                                                <div class="text-danger"><?= $_SESSION['post_errors']['soundcloud_url'] ?></div>
+                                            <?php endif; ?>
+                                        </div>
+                                        <div class="col-6 mb-3">
+                                            <label>Google Podcast URL</label>
+                                            <input type="url" name="google_url" class="form-control" value="<?= old('google_url') ?>">
+                                            <?php if (isset($_SESSION['post_errors']['google_url'])) : ?>
+                                                <div class="text-danger"><?= $_SESSION['post_errors']['google_url'] ?></div>
+                                            <?php endif; ?>
+                                        </div>
+
                                     </div>
                                 </div>
 
@@ -133,8 +108,8 @@
                                                     </span>
                                                 </div>
                                             </div>
-                                            <?php if (isset($_SESSION['post_errors']['thumbnail'])) : ?>
-                                                <div class="text-danger"><?= $_SESSION['post_errors']['thumbnail'] ?></div>
+                                            <?php if (isset($_SESSION['post_errors']['audio_file_path'])) : ?>
+                                                <div class="text-danger"><?= $_SESSION['post_errors']['audio_file_path'] ?></div>
                                             <?php endif; ?>
                                         </div>
                                     </div>
@@ -150,9 +125,10 @@
                                                     </span>
                                                 </div>
                                             </div>
-                                            <?php if (isset($_SESSION['post_errors']['audio_file_path'])) : ?>
-                                                <div class="text-danger"><?= $_SESSION['post_errors']['audio_file_path'] ?></div>
+                                            <?php if (isset($_SESSION['post_errors']['thumbnail'])) : ?>
+                                                <div class="text-danger"><?= $_SESSION['post_errors']['thumbnail'] ?></div>
                                             <?php endif; ?>
+                                            
                                         </div>
                                     </div>
                                 </div>
@@ -174,58 +150,11 @@
 
 <?php include_once base_path('backend/layouts/footer.php') ?>
 <?php include_once base_path('backend/layouts/scripts_foot.php') ?>
-<script src="https://unpkg.com/dropzone@6.0.0-beta.1/dist/dropzone-min.js"></script>
 
 <script>
     var quilEditorContent;
     (function() {
-        quilEditorContent = new Quill(".quill-editor-description", {
-            modules: {
-                toolbar: [
-                    [{
-                            font: []
-                        },
-                        {
-                            size: []
-                        }
-                    ],
-                    ["bold", "italic", "underline", "strike"],
-                    [{
-                            color: []
-                        },
-                        {
-                            background: []
-                        }
-                    ],
-                    [{
-                            script: "super"
-                        },
-                        {
-                            script: "sub"
-                        }
-                    ],
-                    [{
-                            list: "ordered"
-                        },
-                        {
-                            list: "bullet"
-                        },
-                        {
-                            indent: "-1"
-                        },
-                        {
-                            indent: "+1"
-                        }
-                    ],
-                    ["direction", {
-                        align: []
-                    }],
-                    ["link", "image", "video"],
-                    ["clean"]
-                ]
-            },
-            theme: "snow"
-        });
+        initTinymce('#podcastDesc')
 
         function formatAudioDuration(duration) {
             const hours = Math.floor(duration / 3600);
@@ -294,8 +223,6 @@
     })();
 
     function handleCreateBlog(event) {
-        let body = quilEditorContent.root.innerHTML;
-        document.getElementById('podcastDesc').value = body.trim();
         document.getElementById('categoryIdInput').value = document.getElementById('floatingSelectCategory').value;
     }
 
@@ -305,24 +232,6 @@
                 alert(errResponse[key]);
             }
         }
-    }
-
-    function createNewCategory(event) {
-        event.preventDefault();
-        let form = event.target.closest('form');
-        fetch(form.action, {
-                method: 'POST',
-                body: new FormData(form)
-            }).then(response => response.json())
-            .then(data => {
-                if (data && data.errors) {
-                    errorHandler(data.errors);
-                } else {
-                    // success
-                    form.reset();
-                    location.reload();
-                }
-            });
     }
 </script>
 

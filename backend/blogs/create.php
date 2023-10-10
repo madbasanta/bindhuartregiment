@@ -34,32 +34,67 @@
                         <h5 class="card-title">Create new blog</h5>
                         <!-- Vertical Form -->
                         <form class="row g-3" method="POST" onsubmit="handleCreateBlog(event)">
-                            <input type="hidden" name="category_id" id="categoryIdInput">
-                            <div class="col-12">
-                                <label for="inputTitle" class="form-label">Title</label>
-                                <input type="text" name="title" class="form-control" value="<?= old('title') ?>" id="inputTitle">
-                                <?php if (isset($_SESSION['post_errors']['title'])) : ?>
-                                    <div class="text-danger"><?= $_SESSION['post_errors']['title'] ?></div>
-                                <?php endif; ?>
-                            </div>
-                            <div class="col-12">
-                                <label for="inputContent" class="form-label">Content</label>
-                                <textarea name="content" id="blogContent" style="display: none;"></textarea>
-                                <div class="card">
-                                    <div class="card-body p-0">
-                                        <div class="quill-editor-content"><?= old('content') ?></div>
+                            <input type="hidden" name="thumbnail" id="thumbnail">
+                            
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <input type="hidden" name="category_id" id="categoryIdInput">
+                                    <div class="form-group mb-3">
+                                        <label for="inputTitle" class="form-label">Title</label>
+                                        <input type="text" name="title" class="form-control" value="<?= old('title') ?>" id="inputTitle">
+                                        <?php if (isset($_SESSION['post_errors']['title'])) : ?>
+                                            <div class="text-danger"><?= $_SESSION['post_errors']['title'] ?></div>
+                                        <?php endif; ?>
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <label for="inputShortdesc" class="form-label">Short Description</label>
+                                        <textarea rows="2" name="shortdesc" class="form-control" id="inputShortdesc"><?= old('shortdesc') ?></textarea>
+                                        <?php if (isset($_SESSION['post_errors']['shortdesc'])) : ?>
+                                            <div class="text-danger"><?= $_SESSION['post_errors']['shortdesc'] ?></div>
+                                        <?php endif; ?>
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <label for="inputContent" class="form-label">Content</label>
+                                        <textarea name="content" id="blogContent"><?= old('content') ?></textarea>
+                                        
+                                        <?php if (isset($_SESSION['post_errors']['content'])) : ?>
+                                            <div class="text-danger"><?= $_SESSION['post_errors']['content'] ?></div>
+                                        <?php endif; ?>
+                                    </div>
+        
+                                    <div class="form-group mb-3">
+                                        <button type="submit" class="btn btn-primary">Submit</button> &nbsp;
+                                        <a href="/admin/blogs/create" onclick="return confirm('Are you sure?')">
+                                            <button type="button" class="btn btn-secondary">Reset</button>
+                                        </a>
                                     </div>
                                 </div>
-                                <?php if (isset($_SESSION['post_errors']['content'])) : ?>
-                                    <div class="text-danger"><?= $_SESSION['post_errors']['content'] ?></div>
-                                <?php endif; ?>
-                            </div>
+                                <div class="col-md-3">
+                                    <div class="form-group mb-3">
+                                        <label class="form-label">Author</label>
+                                        <input type="text" name="author" class="form-control" value="<?= old('author') ?>">
+                                        <?php if (isset($_SESSION['post_errors']['author'])) : ?>
+                                            <div class="text-danger"><?= $_SESSION['post_errors']['author'] ?></div>
+                                        <?php endif; ?>
+                                    </div>
 
-                            <div class="col-12">
-                                <button type="submit" class="btn btn-primary">Submit</button> &nbsp;
-                                <a href="/admin/blogs/create" onclick="return confirm('Are you sure?')">
-                                    <button type="button" class="btn btn-secondary">Reset</button>
-                                </a>
+                                    <div class="form-group mb-3">
+                                        <label for="inputImage" class="form-label">Thumbnail</label>
+                                        <div id="thumbDrop">
+                                            <div class="dropzone needsclick d-flex" id="demo-upload">
+                                                <div class="dz-message needsclick m-auto">
+                                                    <span class="text">
+                                                        <i class="bi bi-cloud-upload"></i>
+                                                        Drop files here or click to upload.
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <?php if (isset($_SESSION['post_errors']['audio_file_path'])) : ?>
+                                                <div class="text-danger"><?= $_SESSION['post_errors']['audio_file_path'] ?></div>
+                                            <?php endif; ?>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </form><!-- Vertical Form -->
 
@@ -114,58 +149,25 @@
 <script>
     var quilEditorContent;
     (function() {
-        quilEditorContent = new Quill(".quill-editor-content", {
-            modules: {
-                toolbar: [
-                    [{
-                            font: []
-                        },
-                        {
-                            size: []
-                        }
-                    ],
-                    ["bold", "italic", "underline", "strike"],
-                    [{
-                            color: []
-                        },
-                        {
-                            background: []
-                        }
-                    ],
-                    [{
-                            script: "super"
-                        },
-                        {
-                            script: "sub"
-                        }
-                    ],
-                    [{
-                            list: "ordered"
-                        },
-                        {
-                            list: "bullet"
-                        },
-                        {
-                            indent: "-1"
-                        },
-                        {
-                            indent: "+1"
-                        }
-                    ],
-                    ["direction", {
-                        align: []
-                    }],
-                    ["link", "image", "video"],
-                    ["clean"]
-                ]
-            },
-            theme: "snow"
+        initTinymce('#blogContent');
+
+        new Dropzone('#thumbDrop', {
+            url: '/admin/file/upload',
+            acceptedFiles: 'image/*',
+            maxFiles: 1,
+            success(file, response) {
+                document.getElementById('thumbnail').value = response.file
+                if(file.previewElement) {
+                    file.previewElement.querySelectorAll('.dz-progress,.dz-error-message,.dz-error-mark').forEach(item => {
+                        item.style.display = 'none';
+                    });
+                    file.previewElement.querySelector('.dz-success-mark').innerHTML = '<i class="bi bi-check-circle-fill text-success"></i>';
+                }
+            }
         });
     })();
 
     function handleCreateBlog(event) {
-        let body = quilEditorContent.root.innerHTML;
-        document.getElementById('blogContent').value = body.trim();
         document.getElementById('categoryIdInput').value = document.getElementById('floatingSelectCategory').value;
     }
 

@@ -22,8 +22,11 @@ if($_SERVER['REQUEST_METHOD'] === 'GET') {
             ORM::table('blog_posts')->create([
                 'title' => $_POST['title'],
                 'content' => $_POST['content'],
+                'shortdesc' => $_POST['shortdesc'] ?? null,
                 'category_id' => empty($_POST['category_id']) ? null : $_POST['category_id'],
-                'user_id' => auth()->id
+                'user_id' => auth()->id,
+                'author' => $_POST['author'] ?? null,
+                'thumbnail' => $_POST['thumbnail'] ?? null
             ]);
         });
 

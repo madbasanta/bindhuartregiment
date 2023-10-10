@@ -16,6 +16,8 @@ Route::post('/admin/podcasts/edit', 'authenticated', function() {
         'description' => 'required',
         'thumbnail' => 'required',
         'audio_file_path' => 'required',
+        'podcast_date' => 'required',
+        'shortdesc' => 'required',
     ]);
 
     $podcast = ORM::table('podcasts')->find($_GET['id']);
@@ -31,6 +33,10 @@ Route::post('/admin/podcasts/edit', 'authenticated', function() {
             'thumbnail' => $_POST['thumbnail'],
             'audio_file_path' => $_POST['audio_file_path'],
             'duration' => $_POST['duration'],
+            'podcast_date' => nDate($_POST['podcast_date'], 'Y-m-d'),
+            'shortdesc' => $_POST['shortdesc'],
+            'soundcloud_url' => $_POST['soundcloud_url'] ?? null,
+            'google_url' => $_POST['google_url'] ?? null,
         ]);
     });
 
@@ -69,6 +75,8 @@ Route::post('/admin/podcasts/create', 'authenticated', function () {
         'description' => 'required',
         'thumbnail' => 'required',
         'audio_file_path' => 'required',
+        'podcast_date' => 'required',
+        'shortdesc' => 'required',
     ]);
     $result = ORM::transaction(function () {
         ORM::table('podcasts')->create([
@@ -78,6 +86,10 @@ Route::post('/admin/podcasts/create', 'authenticated', function () {
             'audio_file_path' => $_POST['audio_file_path'],
             'duration' => $_POST['duration'],
             'user_id' => auth()->id,
+            'podcast_date' => nDate($_POST['podcast_date'], 'Y-m-d'),
+            'shortdesc' => $_POST['shortdesc'],
+            'soundcloud_url' => $_POST['soundcloud_url'] ?? null,
+            'google_url' => $_POST['google_url'] ?? null,
         ]);
     });
     if ($result['STATUS'] === 'SUCCESS') {

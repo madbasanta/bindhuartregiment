@@ -11,6 +11,9 @@ class QueryBuilder
     public $operators = [
         '=', '<', '>', '<=', '>=', '<>', '!='
     ];
+    private $columns;
+    private $limit;
+    private $offset;
 
     public function __construct($connection, $table, $whereClause)
     {
@@ -109,17 +112,31 @@ class QueryBuilder
         return $this;
     }
 
+    public function limit($limit = null, $offset = null)
+    {
+        $this->limit = $limit;
+        $this->offset = $offset;
+        return $this;
+    }
+
+    public function select($columns = [])
+    {
+        $this->columns = is_array($columns) ? $columns : func_get_args();
+        return $this;
+    }
+
     public function get()
     {
-        $sql = "SELECT * FROM {$this->table}" . ($this->whereClause ? " WHERE {$this->whereClause}" : '') . ($this->orderClause ? " {$this->orderClause}" : '');
+        $selectCols = empty($this->columns) ? '*' : implode(',', $this->columns);
+        $sql = "SELECT $selectCols FROM {$this->table}" . ($this->whereClause ? " WHERE {$this->whereClause}" : '') . ($this->orderClause ? " {$this->orderClause}" : '') . (!is_null($this->limit) ? " LIMIT {$this->limit}" : '') . (!is_null($this->offset) ? " OFFSET {$this->offset}" : '');
         $result = $this->connection->query($sql);
         if (!$result) {
             throw new Exception($this->connection->error);
         }
         $records = [];
         if ($result->num_rows > 0) {
-            while ($row = $result->fetch_object()) {
-                $records[] = $row;
+            while ($row = $result->fetch_assoc()) {
+                $records[] = (object) mb_convert_encoding($row, 'UTF-8');
             }
         }
         return $records;
@@ -127,7 +144,8 @@ class QueryBuilder
 
     public function first()
     {
-        $sql = "SELECT * FROM {$this->table}" . ($this->whereClause ? " WHERE {$this->whereClause} " : '') . ($this->orderClause ? " {$this->orderClause}" : '') . " LIMIT 1";
+        $selectCols = empty($this->columns) ? '*' : implode(',', $this->columns);
+        $sql = "SELECT $selectCols FROM {$this->table}" . ($this->whereClause ? " WHERE {$this->whereClause} " : '') . ($this->orderClause ? " {$this->orderClause}" : '') . " LIMIT 1";
         $result = $this->connection->query($sql);
         if (!$result) {
             throw new Exception($this->connection->error);
@@ -197,6 +215,16 @@ class QueryBuilder
         throw new Exception($this->connection->error);
     }
 
+    public function updateOrCreate($params, $data = [])
+    {
+        $existing = $this->where($params)->first();
+        if ($existing) {
+            return $this->update(array_merge($params, $data));
+        } else {
+            return $this->create(array_merge($params, $data));
+        }
+    }
+
     public function delete()
     {
         $sql = "DELETE FROM {$this->table}" . ($this->whereClause ? " WHERE {$this->whereClause}" : '');
@@ -223,6 +251,16 @@ class ORM
         if ($this->connection->connect_error) {
             die("Connection failed: " . $this->connection->connect_error);
         }
+    }
+
+    public static function schema($sqlStatement)
+    {
+        $orm = new ORM();
+        $result = $orm->connection->query($sqlStatement);
+        if (!$result) {
+            throw new Exception($orm->connection->error);
+        }
+        return $result;
     }
 
     public static function table($table)

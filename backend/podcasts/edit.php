@@ -113,16 +113,43 @@ if(empty($podcast)) {
                                             <?php endif; ?>
                                         </div>
 
-                                        <div class="col-12">
+                                        <div class="col-10 mb-3">
+                                            <label for="inputShortdesc" class="form-label">Short Description</label>
+                                            <textarea rows="2" name="shortdesc" class="form-control" id="inputShortdesc"><?= $podcast->shortdesc ?></textarea>
+                                            <?php if (isset($_SESSION['post_errors']['shortdesc'])) : ?>
+                                                <div class="text-danger"><?= $_SESSION['post_errors']['shortdesc'] ?></div>
+                                            <?php endif; ?>
+                                        </div>
+                                        <div class="col-2 mb-3">
+                                            <label for="inputDate" class="form-label">Podcast Date</label>
+                                            <input type="date" name="podcast_date" class="form-control" 
+                                                value="<?= nDate($podcast->podcast_date, 'Y-m-d') ?>" id="inputDate">
+                                            <?php if (isset($_SESSION['post_errors']['podcast_date'])) : ?>
+                                                <div class="text-danger"><?= $_SESSION['post_errors']['podcast_date'] ?></div>
+                                            <?php endif; ?>
+                                        </div>
+
+                                        <div class="col-12 mb-3">
                                             <label for="inputContent" class="form-label">Description</label>
-                                            <textarea name="description" id="podcastDesc" style="display: none;"><?= $podcast->description ?? old('description') ?></textarea>
-                                            <div class="card">
-                                                <div class="card-body p-0">
-                                                    <div class="quill-editor-description"><?= $podcast->description ?? old('description') ?></div>
-                                                </div>
-                                            </div>
+                                            <textarea name="description" id="podcastDesc"><?= $podcast->description ?? old('description') ?></textarea>
                                             <?php if (isset($_SESSION['post_errors']['description'])) : ?>
                                                 <div class="text-danger"><?= $_SESSION['post_errors']['description'] ?></div>
+                                            <?php endif; ?>
+                                        </div>
+
+                                        
+                                        <div class="col-6 mb-3">
+                                            <label>Soundcloud URL</label>
+                                            <input type="url" name="soundcloud_url" class="form-control" value="<?= $podcast->soundcloud_url ?>">
+                                            <?php if (isset($_SESSION['post_errors']['soundcloud_url'])) : ?>
+                                                <div class="text-danger"><?= $_SESSION['post_errors']['soundcloud_url'] ?></div>
+                                            <?php endif; ?>
+                                        </div>
+                                        <div class="col-6 mb-3">
+                                            <label>Google Podcast URL</label>
+                                            <input type="url" name="google_url" class="form-control" value="<?= $podcast->google_url ?>">
+                                            <?php if (isset($_SESSION['post_errors']['google_url'])) : ?>
+                                                <div class="text-danger"><?= $_SESSION['post_errors']['google_url'] ?></div>
                                             <?php endif; ?>
                                         </div>
                                     </div>
@@ -141,8 +168,8 @@ if(empty($podcast)) {
                                                     </span>
                                                 </div>
                                             </div>
-                                            <?php if (isset($_SESSION['post_errors']['thumbnail'])) : ?>
-                                                <div class="text-danger"><?= $_SESSION['post_errors']['thumbnail'] ?></div>
+                                            <?php if (isset($_SESSION['post_errors']['audio_file_path'])) : ?>
+                                                <div class="text-danger"><?= $_SESSION['post_errors']['audio_file_path'] ?></div>
                                             <?php endif; ?>
                                         </div>
                                     </div>
@@ -158,9 +185,16 @@ if(empty($podcast)) {
                                                     </span>
                                                 </div>
                                             </div>
-                                            <?php if (isset($_SESSION['post_errors']['audio_file_path'])) : ?>
-                                                <div class="text-danger"><?= $_SESSION['post_errors']['audio_file_path'] ?></div>
+                                            <?php if (isset($_SESSION['post_errors']['thumbnail'])) : ?>
+                                                <div class="text-danger"><?= $_SESSION['post_errors']['thumbnail'] ?></div>
                                             <?php endif; ?>
+                                            <div class="dz-preview dz-processing dz-complete dz-image-preview">
+                                                <div class="dz-image">
+                                                    <img width="100" class="img-fluid" src="/uploads/<?= $podcast->thumbnail ?>" data-dz-thumbnail alt="">
+                                                    <br>
+                                                    <a href="/uploads/<?= $podcast->thumbnail ?>">/uploads/<?= $podcast->thumbnail ?></a> 
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -187,53 +221,7 @@ if(empty($podcast)) {
 <script>
     var quilEditorContent;
     (function() {
-        quilEditorContent = new Quill(".quill-editor-description", {
-            modules: {
-                toolbar: [
-                    [{
-                            font: []
-                        },
-                        {
-                            size: []
-                        }
-                    ],
-                    ["bold", "italic", "underline", "strike"],
-                    [{
-                            color: []
-                        },
-                        {
-                            background: []
-                        }
-                    ],
-                    [{
-                            script: "super"
-                        },
-                        {
-                            script: "sub"
-                        }
-                    ],
-                    [{
-                            list: "ordered"
-                        },
-                        {
-                            list: "bullet"
-                        },
-                        {
-                            indent: "-1"
-                        },
-                        {
-                            indent: "+1"
-                        }
-                    ],
-                    ["direction", {
-                        align: []
-                    }],
-                    ["link", "image", "video"],
-                    ["clean"]
-                ]
-            },
-            theme: "snow"
-        });
+        initTinymce('#podcastDesc')
 
         function formatAudioDuration(duration) {
             const hours = Math.floor(duration / 3600);
@@ -302,36 +290,9 @@ if(empty($podcast)) {
     })();
 
     function handleCreateBlog(event) {
-        let body = quilEditorContent.root.innerHTML;
-        document.getElementById('podcastDesc').value = body.trim();
         document.getElementById('categoryIdInput').value = document.getElementById('floatingSelectCategory').value;
     }
 
-    function errorHandler(errResponse) {
-        for (let key in errResponse) {
-            if (errResponse.hasOwnProperty(key)) {
-                alert(errResponse[key]);
-            }
-        }
-    }
-
-    function createNewCategory(event) {
-        event.preventDefault();
-        let form = event.target.closest('form');
-        fetch(form.action, {
-                method: 'POST',
-                body: new FormData(form)
-            }).then(response => response.json())
-            .then(data => {
-                if (data && data.errors) {
-                    errorHandler(data.errors);
-                } else {
-                    // success
-                    form.reset();
-                    location.reload();
-                }
-            });
-    }
 </script>
 
 <?php unset($_SESSION['post_errors']) ?>

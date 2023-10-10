@@ -21,11 +21,19 @@ function formdata_content()
 function validate($bag, $messages = [])
 {
     $error_bag = [];
+    $defaultMessages = [
+        'required' => 'The {field} field is required',
+        'unique' => 'The {field} field must be unique',
+    ];
     foreach($bag as $field => $rules) {
         $rules = explode('|', $rules);
         foreach($rules as $rule) {
-            if(!validate_rule($field, $rule)) {
-                $error_bag[$field] = "The {$field} field is invalid";
+            $args = null;
+            if(strpos($rule, ':')) {
+                list($rule, $args) = explode(':', $rule);
+            }
+            if(!validate_rule($field, $rule, $args)) {
+                $error_bag[$field] = strtr($defaultMessages[$rule] ?? "The {field} field is invalid", ['{field}' => $field]);
                 if(isset($messages[$rule])) {
                     $error_bag[$field] = str_replace('{$field}', $field, $messages[$rule]);
                 }
@@ -35,6 +43,7 @@ function validate($bag, $messages = [])
     if(count($error_bag) > 0) {
         $_SESSION['post_old'] = $_POST;
         http_response_code(422);
+        $_SESSION['error'] = 'Please check invalid fields.';
         // check if ajax
         if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
             header('Content-Type: application/json');
@@ -51,7 +60,7 @@ function validate($bag, $messages = [])
     }
 }
 
-function validate_rule($field, $rule)
+function validate_rule($field, $rule, $args)
 {
     switch($rule) {
         case 'required':
@@ -59,6 +68,9 @@ function validate_rule($field, $rule)
             return !empty($trimmedString);
             break;
         case 'unique':
-
+            $exists = ORM::table($args)->where($field, $_POST[$field])->first();
+            return empty($exists);
+        case 'numeric':
+            return is_numeric($_POST[$field]);
     }
 }

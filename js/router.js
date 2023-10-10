@@ -5,7 +5,7 @@ const routes = {
 		description: "Page not found",
 	},
 	"/": {
-		template: "/home/index.html",
+		template: "/home/index",
 		title: "Bindhu Art Regiment | Home",
 		description: "This is the home page",
 	},

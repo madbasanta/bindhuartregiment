@@ -24,18 +24,66 @@
   <link href="/assets/vendor/quill/quill.snow.css" rel="stylesheet">
   <link href="/assets/vendor/quill/quill.bubble.css" rel="stylesheet">
   <link href="/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-  <link href="/assets/vendor/simple-datatables/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
 
   <!-- Template Main CSS File -->
   <link href="/assets/css/style.css" rel="stylesheet">
 
-  <!-- =======================================================
-  * Template Name: NiceAdmin
-  * Updated: Jul 27 2023 with Bootstrap v5.3.1
-  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+  <style>
+    .ql-font-poppins {
+      font-family: 'Poppins', sans-serif;
+    }
+  </style>
+  <link href="https://unpkg.com/dropzone@6.0.0-beta.1/dist/dropzone.css" rel="stylesheet" type="text/css" />
+<style>
+    .dropzone {
+        width: 98%;
+        margin: 1%;
+        border: 2px dashed #3498db !important;
+        border-radius: 5px;
+        transition: 0.2s;
+        min-height: 100px;
+    }
+
+    .dropzone.dz-drag-hover {
+        border: 2px solid #3498db !important;
+    }
+
+    .dz-message.needsclick img {
+        width: 50px;
+        display: block;
+        margin: auto;
+        opacity: 0.6;
+        margin-bottom: 15px;
+    }
+
+    span.plus {
+        display: none;
+    }
+
+    .dropzone.dz-started .dz-message {
+        display: inline-block !important;
+        width: 120px;
+        float: right;
+        border: 1px solid rgba(238, 238, 238, 0.36);
+        border-radius: 30px;
+        height: 120px;
+        margin: 16px;
+        transition: 0.2s;
+    }
+
+    .dropzone.dz-started .dz-message span.text {
+        display: none;
+    }
+
+    .dropzone.dz-started .dz-message span.plus {
+        display: block;
+        font-size: 70px;
+        color: #AAA;
+        line-height: 110px;
+    }
+</style>
+
 </head>
 
 <body>

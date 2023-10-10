@@ -9,24 +9,42 @@ include_once base_path('adminadmin/database.php');
 
 
 include_once base_path('routes/Route.php');
-include_once base_path('routes/authentication.php');
+include_once base_path('routes/webRoutes.php');
 include_once base_path('routes/blogs.php');
 include_once base_path('routes/podcasts.php');
+include_once base_path('routes/artists.php');
 
 Route::get('/', base_path('index.html'));
 Route::get('/admin', base_path('adminadmin/dashboard.php'));
 
 $url = explode('?', $_SERVER['REQUEST_URI'])[0];
-if ($actions = (Route::$routes[$_SERVER['REQUEST_METHOD']][$url] ?? null)) {
-    foreach($actions as $action) {
-        if(is_callable($action)) {
-            $result = $action();
-        } elseif(file_exists($action)) {
-            require_once($action);
+foreach(Route::$routes[$_SERVER['REQUEST_METHOD']] as $route => $actions) {
+    $pregRoute = preg_replace('#\{(\w+)\}#', '([a-z-]+)', $route);
+    // Check if the request URI matches the route pattern
+    if (preg_match("#^$pregRoute$#", $url, $matches)) {
+        // Extract any route parameters
+        $params = array_slice($matches, 1);
+        foreach($actions as $action) {
+            if(is_callable($action)) {
+                $result = $action(...$params);
+            } elseif(file_exists($action)) {
+                require_once($action);
+            }
         }
+        exit;
     }
-    exit;
 }
+// old route handler
+// if ($actions = (Route::$routes[$_SERVER['REQUEST_METHOD']][$url] ?? null)) {
+//     foreach($actions as $action) {
+//         if(is_callable($action)) {
+//             $result = $action();
+//         } elseif(file_exists($action)) {
+//             require_once($action);
+//         }
+//     }
+//     exit;
+// }
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     $static = base_path($_SERVER['PHP_SELF']);

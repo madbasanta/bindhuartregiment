@@ -42,16 +42,23 @@ img.billboardarticle_image {
     height: 600px;
 }
 p.words,
-.words p,
-.words h1 {
+.words p {
     color: black;
     font-family: 'Mazin';
     font-size: 25px;
     /* text-align: justify; */
 }
-.words h1 {
+
+.words h1,
+.words h2 {
     font-size: 40px;
+    font-family: 'Antigone';
 }
+
+.words h1 {
+    font-size: 50px;
+}
+
 .words {
     margin: 7%;
 }
@@ -132,7 +139,10 @@ button.TH {
 }
 @media only screen and (max-width: 500px){
     .words h1 {
-        font-size: 25px;
+        font-size: 40px;
+    }
+    .words h2 {
+        font-size: 30px;
     }
     .words p {
         font-size: 20px;
