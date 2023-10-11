@@ -1,9 +1,9 @@
-<?php 
-    $podcast = ORM::table('podcasts')->find($_GET['id'] ?? 0);
-    if(empty($podcast)) {
-        echo '<h2 style="color:white;text-align:center;">404!<br>Podcast not found</h2>';
-        return;
-    }
+<?php
+$podcast = ORM::table('podcasts')->find($_GET['id'] ?? 0);
+if (empty($podcast)) {
+    echo '<h2 style="color:white;text-align:center;">404!<br>Podcast not found</h2>';
+    return;
+}
 ?>
 
 <nav class="nav_cover">
@@ -50,11 +50,11 @@
 <div class="content_wrap">
     <div class="art_bill" style="display: flex; justify-content: center; align-items: center;overflow: visible;">
         <div class="semi_circle" style="position: absolute;z-index: -1;">
-            
+
         </div>
         <h1 class="pnc">
-                    <?= wordwrap($podcast->title, 20, '<br>') ?>
-                </h1>
+            <?= wordwrap($podcast->title, 20, '<br>') ?>
+        </h1>
     </div>
     <div class="img_bill">
         <img src="/uploads/<?= $podcast->thumbnail ?>" alt="podcastimgbill" class="pod_bill">
@@ -69,12 +69,17 @@
         <?= $podcast->description ?>
     </div>
 
-    <div class="audio-player">
-        <audio controls>
-            <source src="/uploads/<?= $podcast->audio_file_path ?>" type="audio/mpeg">
-        </audio>
-        <!-- <iframe title="Embed Player" width="100%" height="188px" src="https://embed.acast.com/61a5495fd20fb600197c82fd/61a5496c32c9c0001a811f1b" scrolling="no" frameBorder="0" style="border:none;overflow:hidden;"></iframe> -->
-        <!-- <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1605928965&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/bar-nepal" title="Bindhu art regiment" target="_blank" style="color: #cccccc; text-decoration: none;">Bindhu art regiment</a> · <a href="https://soundcloud.com/bar-nepal/bindhu-art-regiment-weekly" title="Theatre |  contemporary art scene | politics | Expression" target="_blank" style="color: #cccccc; text-decoration: none;">Theatre |  contemporary art scene | politics | Expression</a></div> -->
+    <div class="audio-player" id="player">
+        <?php if ($podcast->soundcloud_url) : ?>
+            <audio controls>
+                <source src="<?= $podcast->soundcloud_url; ?>" type="audio/mpeg">
+                <source src="/uploads/<?= $podcast->audio_file_path ?>" type="audio/mpeg">
+            </audio>
+        <?php else : ?>
+            <audio controls>
+                <source src="/uploads/<?= $podcast->audio_file_path ?>" type="audio/mpeg">
+            </audio>
+        <?php endif; ?>
     </div>
 
 </div>
@@ -349,3 +354,36 @@
         }
     }
 </style>
+
+<script>
+    (function() {
+        fetch('https://soundcloud.com/oembed?' + new URLSearchParams({
+            format: 'json',
+            maxheight: '166',
+            url: '<?= $podcast->soundcloud_url ?>'
+        })).then(response => response.json()).then(data => {
+            try {
+                const div = document.createElement('div');
+                div.innerHTML = data.html;
+                const groups = decodeURIComponent(div.firstChild.src).match(/^.*\/\/api\.soundcloud\.com\/(?<type>[[a-z]*)\/(?<id>\d*)/).groups;
+                const embededCode = `<iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" 
+                src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/${groups.id}&color=%23ff5500&auto_play=true&hide_related=true&show_comments=true&show_user=true&show_reposts=false&show_teaser=false"></iframe>
+                <div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;">
+                    <a href="${data.author_url}" title="${data.author_name}" target="_blank" style="color: #cccccc; text-decoration: none;">
+                        ${data.author_name}
+                    </a> ·
+                    <a href="<?= $podcast->soundcloud_url ?>" title="${data.title}" target="_blank" style="color: #cccccc; text-decoration: none;">
+                        ${data.title}
+                    </a>
+                </div>`;
+                document.getElementById('player').innerHTML = embededCode;
+                console.log(data);
+            } catch (error) {
+                console.error(error);
+            }
+        }).catch(error => {
+            console.error(error);
+            console.log('Failed to embed soundcloud player');
+        });
+    })();
+</script>

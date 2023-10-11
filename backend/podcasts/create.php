@@ -79,14 +79,14 @@
                                         
                                         <div class="col-6 mb-3">
                                             <label>Soundcloud URL</label>
-                                            <input type="url" name="soundcloud_url" class="form-control" value="<?= old('soundcloud_url') ?>">
+                                            <input type="text" name="soundcloud_url" class="form-control" value="<?= old('soundcloud_url') ?>">
                                             <?php if (isset($_SESSION['post_errors']['soundcloud_url'])) : ?>
                                                 <div class="text-danger"><?= $_SESSION['post_errors']['soundcloud_url'] ?></div>
                                             <?php endif; ?>
                                         </div>
                                         <div class="col-6 mb-3">
                                             <label>Google Podcast URL</label>
-                                            <input type="url" name="google_url" class="form-control" value="<?= old('google_url') ?>">
+                                            <input type="text" name="google_url" class="form-control" value="<?= old('google_url') ?>">
                                             <?php if (isset($_SESSION['post_errors']['google_url'])) : ?>
                                                 <div class="text-danger"><?= $_SESSION['post_errors']['google_url'] ?></div>
                                             <?php endif; ?>

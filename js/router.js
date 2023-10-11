@@ -161,6 +161,13 @@ const locationHandler = async () => {
 	const route = routes[location] || routes["404"];
 	const html = await fetch(route.template + (query ? `?${query}` : "")).then((response) => response.text());
 	document.getElementById("content").innerHTML = html;
+
+	// Extract and run the embedded scripts
+    var scripts = document.getElementById("content").getElementsByTagName("script");
+    for (var i = 0; i < scripts.length; i++) {
+        eval(scripts[i].innerHTML);
+    }
+	
 	document.title = route.title;
 	document
 		.querySelector('meta[name="description"]')
