@@ -5,7 +5,7 @@ Route::get('/home/index', base_path('home/index.php'));
 // podcast
 Route::get('/podcasts', base_path('podcast/podcastmain.php'));
 Route::get('/podcasts/{slug}', function($slug) {
-    $strId = substr($slug, strpos($slug, 'id-') + 3);
+    $strId = substr($slug, strrpos($slug, 'id-') + 3);
     $podcast = ORM::table('podcasts')->where('id', strToNumber($strId))->first();
     if(!$podcast) {
         http_response_code(404);

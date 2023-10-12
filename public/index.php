@@ -73,6 +73,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             "csv" => "text/csv",
             "woff" => "font/woff",
             "woff2" => "font/woff",
+            "ttf" => "font/ttf",
+            "otf" => "font/otf",
             // Add more file extensions and corresponding content types as needed
         ];
 
@@ -105,6 +107,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             "csv" => "text/csv",
             "woff" => "font/woff",
             "woff2" => "font/woff",
+            "ttf" => "font/ttf",
+            "otf" => "font/otf",
             // Add more file extensions and corresponding content types as needed
         ];
 
