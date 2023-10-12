@@ -90,15 +90,3 @@ Route::post('/admin/artists/edit', 'authenticated', function() {
     header('Location: /admin/artists/edit?id='. $_GET['id']);
 });
 
-
-// frontend
-Route::get('/artists', base_path('artist/artist.php'));
-Route::get('/artists/{slug}', function($slug) {
-    $artist = ORM::table('artists')->where('slug', $slug)->first();
-    if(!$artist) {
-        http_response_code(404);
-        require_once(base_path('404/404.html'));
-        exit;
-    }
-    include_once(base_path('artist/artistprofile.php'));
-});

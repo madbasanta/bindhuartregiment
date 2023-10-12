@@ -176,7 +176,3 @@ Route::post('/admin/file/upload/chunk', 'authenticated', function () {
         ], 500);
     }
 });
-
-// frontend
-Route::get('/podcast/podcastmain', base_path('podcast/podcastmain.php'));
-Route::get('/podcast/podcast', base_path('podcast/podcast.php'));

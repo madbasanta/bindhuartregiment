@@ -72,65 +72,39 @@
         </nav>
 
         <div id="content">
-            <div class="billboard_1_pod">
-                <div class="billboard_2_pod">
-                    <h1 class="tell">
-                        Our
-                        <br>
-                        Podcast
+            <div class="support_us">
+                <div class="su_bill">
+                    <h1>
+                        support
+                        bindhu
+                        art
+                        regiment.
                     </h1>
-                    <div class="subscribe_box">
-                        <p class="subscribe">Browse our podcast</p>
-                    </div>
                 </div>
-            </div>
+                <div class="su_mainbody_container">
+                    <p>
 
-            <div class="wlc->podcast">
-                <p class="wlc->podcast">
-                    Let's amplify our Voice <br><br>
-                    We intend to meet and talk with creators employing art as reflection of individuals and collectives to inspire
-                    positivity and awareness. We highly appreciate the creator's abilities to respond to the world around us and
-                    truly grateful for creating impacts in needed circumstances. In our podcast we feature artists and communities
-                    who are overshadowed in contemporary times. Let's together celebrate the freedom of expression of all artists.
-                </p>
-            </div>
-
-            <?php
-            $podcasts = ORM::table('podcasts')->orderBy('created_at', 'desc')->get();
-            ?>
-
-            <div class="all_episodes">
-                <div class="allep_title">
-                    <h1>ALL EPISODES</h1>
+                        By Supporting Bindhu art regiment you can inspire change in society through art and its impact. Building
+                        connections with cultural practitioners, creators and multidisciplinary artists, film makers who inspire
+                        change and create positivity around us. We also serve as a platform to promote and showcase works of artists
+                        whose work has been overshadowed.
+                        <br><br>
+                        Our mission is to support, connect and celebrate the work of artists, film makers, writers, cultural
+                        practitioners and creators. We stand firm with those who create and are convinced in the transformative
+                        power of art, culture and creativity. We like to collaborate with artists who convey advanced new ideas for
+                        positive impact and develop new perspectives. We are grounded to support and provide necessary workshops in
+                        landscape where infrastructure is very minimal. We work to create inclusive opportunities for artists living
+                        and working beyond kathmandu (capital city ) in rural landscapes of the country, providing them necessary
+                        connection and resources to showcase their work.
+                        <br><br>
+                        We work with artists, film makers, cultural practitioners, writers and creators of rural landscapes to help
+                        them tell their stories to the world and support sustainability.
+                        We partner and collaborate with organisations, individuals and companies to bring overshadowed stories from
+                        different landscapes of country and support artists freedom of expression - We believe art literary media is
+                        very centralised in kathmandu - we want this powerful medium of transformation spread at different
+                        landscapes of country .
+                    </p>
                 </div>
-                <?php foreach ($podcasts as $podcast) : ?>
-                    <div class="poet1">
-                        <div class="poetimg">
-                            <img src="/uploads/<?= $podcast->thumbnail ?>" width="300px" height="" alt="Bindu Art Regiment">
-                        </div>
-                        <div class="poetdetails">
-                            <div class="poettitle">
-                                <h4><?= $podcast->title ?> | <?= formatDuration($podcast->duration) ?></h4>
-                            </div>
-                            <div class="poetsubtitle">
-                                <h6><?= nDate($podcast->created_at) ?></h6>
-                            </div>
-                            <div class="podpoetinfo">
-                                <p><?= str_limit(strip_tags($podcast->description), 200) ?></p>
-                            </div>
-                            <div class="poet_listen_pods">
-                                <a href="/podcasts/<?= slugify($podcast->title, $podcast->id) ?>" style="display: flex;align-items:center">
-                                    <p>
-                                        LISTEN PODS
-                                    </p>
-                                    <div class="play">
-                                        <img src="/images/play3.svg" alt="listen podcast">
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                <?php endforeach; ?>
             </div>
 
         </div>

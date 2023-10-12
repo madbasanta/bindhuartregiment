@@ -50,13 +50,13 @@
                             <span class="text">MENU</span>
                         </button>
                         <div id="menu_on_click">
-                            <ul class="click_menu">
-                                <li class="click_menu" onclick="donotshow()"><a href="#artistprofile" class="click_menu">ARTIST PROFILE</a></li>
-                                <li class="click_menu" onclick="donotshow()"><a href="#projects" class="click_menu">EVENT AND PROJECTS</a></li>
-                                <li class="click_menu" onclick="donotshow()"><a href="#podcastmain" class="click_menu">PODCAST</a></li>
-                                <li class="click_menu" onclick="donotshow()"><a href="#aboutus" class="click_menu">OUR
+                        <ul class="click_menu">
+                                <li class="click_menu" onclick="donotshow()"><a href="/artists" class="click_menu">ARTIST PROFILE</a></li>
+                                <li class="click_menu" onclick="donotshow()"><a href="/event-projects" class="click_menu">EVENT AND PROJECTS</a></li>
+                                <li class="click_menu" onclick="donotshow()"><a href="/podcasts" class="click_menu">PODCAST</a></li>
+                                <li class="click_menu" onclick="donotshow()"><a href="/about-us" class="click_menu">OUR
                                         TEAM</a></li>
-                                <li class="click_menu" onclick="donotshow()"><a href="#supportus" class="click_menu">SUPPORT US</a></li>
+                                <li class="click_menu" onclick="donotshow()"><a href="/support-us" class="click_menu">SUPPORT US</a></li>
                             </ul>
                             <div class="cross">
                                 <img src="/images/cancel-circle.svg" alt="cancel" onclick="donotshow()">
@@ -532,7 +532,7 @@
         </div>
 
 
-        <script src="/js/mainx.js?v=1.0.5"></script>
+        <!-- <script src="/js/mainx.js?v=1.0.5"></script> -->
         <script src="/js/nav.js?v=1.0.5"></script>
         <link rel="stylesheet" href="/assets/css/project.css?v=1.0.5">
         <link rel="stylesheet" href="/assets/css/getintouch.css?v=1.0.5">

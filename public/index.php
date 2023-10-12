@@ -1,4 +1,5 @@
 <?php
+
 ini_set('display_errors', 'On');
 include_once __DIR__ . '/../adminadmin/env.php';
 // include_once __DIR__ . '/../vendor/autoload.php';
@@ -15,12 +16,12 @@ include_once base_path('routes/blogs.php');
 include_once base_path('routes/podcasts.php');
 include_once base_path('routes/artists.php');
 
-Route::get('/', base_path('index.html'));
+Route::get('/', base_path('index.php'));
 Route::get('/admin', base_path('adminadmin/dashboard.php'));
 
 $url = explode('?', $_SERVER['REQUEST_URI'])[0];
 foreach(Route::$routes[$_SERVER['REQUEST_METHOD']] as $route => $actions) {
-    $pregRoute = preg_replace('#\{(\w+)\}#', '([a-z-]+)', $route);
+    $pregRoute = preg_replace('#\{(\w+)\}#', '([a-z-0-9]+)', $route);
     // Check if the request URI matches the route pattern
     if (preg_match("#^$pregRoute$#", $url, $matches)) {
         // Extract any route parameters
@@ -49,9 +50,43 @@ foreach(Route::$routes[$_SERVER['REQUEST_METHOD']] as $route => $actions) {
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     $static = base_path($_SERVER['PHP_SELF']);
+    $uriStatic = base_path(explode('?', $_SERVER['REQUEST_URI'])[0]);
+    
     if (file_exists($static)) {
         // Determine the content type based on the file extension
         $extension = pathinfo($static, PATHINFO_EXTENSION);
+        $content_types = [
+            'html' => 'text/html',
+            'css' => 'text/css',
+            'js' => 'application/javascript',
+            'png' => 'image/png',
+            "pdf" => "application/pdf",
+            "jpeg" => "image/jpeg",
+            "jpg" => "image/jpeg",
+            "gif" => "image/gif",
+            "xml" => "application/xml",
+            "json" => "application/json",
+            "svg" => "image/svg+xml",
+            "zip" => "application/zip",
+            "mp3" => "audio/mpeg",
+            "mp4" => "video/mp4",
+            "csv" => "text/csv",
+            "woff" => "font/woff",
+            "woff2" => "font/woff",
+            // Add more file extensions and corresponding content types as needed
+        ];
+
+        // Set content type if the extension is recognized, otherwise use a default type
+        if (isset($content_types[$extension])) {
+            header('Content-Type: ' . $content_types[$extension]);
+            echo file_get_contents($static);
+            exit;
+        }
+    }
+    
+    if (file_exists($uriStatic)) {
+        // Determine the content type based on the file extension
+        $extension = pathinfo($uriStatic, PATHINFO_EXTENSION);
         $content_types = [
             'html' => 'text/html',
             'css' => 'text/css',
@@ -81,9 +116,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             http_response_code(404);
             require_once base_path('404/404.html');
         }
-        echo file_get_contents($static);
+        echo file_get_contents($uriStatic);
         exit;
     }
+    // dd($static, $uriStatic, $_SERVER['REQUEST_URI']);
 }
 
 // 404

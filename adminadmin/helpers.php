@@ -99,3 +99,22 @@ function response($response, $status = 200)
     echo $response;
     exit;
 }
+
+function numberToStr($number)
+{
+    return implode('', array_map(function($n) {
+        return chr(ord('a') + $n - 1);
+    }, str_split(strval($number))));
+}
+
+function strToNumber($str)
+{
+    return implode('', array_map(function($chr) {
+        return ord($chr) - ord('a') + 1;
+    }, str_split($str)));
+}
+
+function slugify($str, $id = null)
+{
+    return strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', $str), '-')) . ($id ? '-id-' . numberToStr($id) : '');
+}

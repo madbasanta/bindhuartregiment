@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0 maximum-scale=1.0, user-scalable=0">
     <meta name="description" content="Bindhu Art Regiment , ART and Literature">
-    <title>Podcasts | Bindhu Art Regiment</title>
+    <title>About Us | Bindhu Art Regiment</title>
 </head>
 <script>
     window.addEventListener("load", function() {
@@ -51,7 +51,7 @@
                             <span class="text">MENU</span>
                         </button>
                         <div id="menu_on_click">
-                            <ul class="click_menu">
+                        <ul class="click_menu">
                                 <li class="click_menu" onclick="donotshow()"><a href="/artists" class="click_menu">ARTIST PROFILE</a></li>
                                 <li class="click_menu" onclick="donotshow()"><a href="/event-projects" class="click_menu">EVENT AND PROJECTS</a></li>
                                 <li class="click_menu" onclick="donotshow()"><a href="/podcasts" class="click_menu">PODCAST</a></li>
@@ -72,65 +72,35 @@
         </nav>
 
         <div id="content">
-            <div class="billboard_1_pod">
-                <div class="billboard_2_pod">
-                    <h1 class="tell">
-                        Our
-                        <br>
-                        Podcast
+            <div class="saugat">
+                <div class="title_sub">
+                    <h1 class="name-ab">
+                        Saugat Upreti
                     </h1>
-                    <div class="subscribe_box">
-                        <p class="subscribe">Browse our podcast</p>
+                    <h3 class="desc-ab">
+                        Founder / Curator
+                    </h3>
+                </div>
+
+                <div class="info-container">
+                    <p class="para--saugat">
+                        Saugat upreti is the founder of Bindhu art regiment. Lifelong creative with deep roots in the arts, film ,
+                        music, literature and culture. He hosts the podcast under the pseudonym "le.laa" a moniker he discovered on
+                        his journey from Me to Mine. Moving from the eastern part of Nepal to the capital city Kathmandu his
+                        abilities to create critical discussion through art evolved from personal to collectives and joint works to
+                        create impact. As a freelancer he has worked on National and international art collaboration projects
+                        managing and assisting art projects of a diverse medium.
+                        Before the Bindhu art regiment he developed two other projects BREAKING SILENCE AND PROJECT NAADHE where he
+                        organised and curated many events and supported a new generation of artists to create and showcase their art
+                        works, music, writings and films.
+
+                    </p>
+                    <div class="image_saugat">
+                        <img src="/images/saugat.jpg" width="300px" height="280px" alt="Saugat Upreti" class="saugatimg">
+
                     </div>
                 </div>
-            </div>
 
-            <div class="wlc->podcast">
-                <p class="wlc->podcast">
-                    Let's amplify our Voice <br><br>
-                    We intend to meet and talk with creators employing art as reflection of individuals and collectives to inspire
-                    positivity and awareness. We highly appreciate the creator's abilities to respond to the world around us and
-                    truly grateful for creating impacts in needed circumstances. In our podcast we feature artists and communities
-                    who are overshadowed in contemporary times. Let's together celebrate the freedom of expression of all artists.
-                </p>
-            </div>
-
-            <?php
-            $podcasts = ORM::table('podcasts')->orderBy('created_at', 'desc')->get();
-            ?>
-
-            <div class="all_episodes">
-                <div class="allep_title">
-                    <h1>ALL EPISODES</h1>
-                </div>
-                <?php foreach ($podcasts as $podcast) : ?>
-                    <div class="poet1">
-                        <div class="poetimg">
-                            <img src="/uploads/<?= $podcast->thumbnail ?>" width="300px" height="" alt="Bindu Art Regiment">
-                        </div>
-                        <div class="poetdetails">
-                            <div class="poettitle">
-                                <h4><?= $podcast->title ?> | <?= formatDuration($podcast->duration) ?></h4>
-                            </div>
-                            <div class="poetsubtitle">
-                                <h6><?= nDate($podcast->created_at) ?></h6>
-                            </div>
-                            <div class="podpoetinfo">
-                                <p><?= str_limit(strip_tags($podcast->description), 200) ?></p>
-                            </div>
-                            <div class="poet_listen_pods">
-                                <a href="/podcasts/<?= slugify($podcast->title, $podcast->id) ?>" style="display: flex;align-items:center">
-                                    <p>
-                                        LISTEN PODS
-                                    </p>
-                                    <div class="play">
-                                        <img src="/images/play3.svg" alt="listen podcast">
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                <?php endforeach; ?>
             </div>
 
         </div>
