@@ -1,5 +1,5 @@
 <?php
-    $recents = ORM::table('podcasts')->orderBy('created_at', 'desc')->limit(3)->get();
+$recents = ORM::table('podcasts')->orderBy('created_at', 'desc')->limit(3)->get();
 ?>
 <div class="billboard_1">
     <!--  <div class="side_nav">
@@ -144,7 +144,6 @@
         </div>
     </div>
 </div>
-</div>
 
 
 <br><br>
@@ -159,35 +158,35 @@
         </button>
     </div>
     <div class="grid-container">
-        <?php foreach($recents as $recent): ?>
-        <div class="grid-item">
-            <div class="poetimg">
-                <img src="/uploads/<?= $recent->thumbnail ?>" width="300px" height="" alt="<?= $recent->title ?>">
+        <?php foreach ($recents as $recent) : ?>
+            <div class="grid-item">
+                <div class="poetimg">
+                    <img src="/uploads/<?= $recent->thumbnail ?>" width="300px" height="" alt="<?= $recent->title ?>">
+                </div>
+                <div class="poetdetails">
+                    <div class="poettitle">
+                        <h4> <?= $recent->title; ?>
+                            <br> [Podcast : <?= formatDuration($recent->duration) ?>]
+                        </h4>
+                    </div>
+                    <div class="poetsubtitle">
+                        <h6><?= nDate($recent->podcast_date) ?></h6>
+                    </div>
+                    <div class="podpoetinfo">
+                        <p><?= str_limit($recent->shortdesc, 200) ?></p>
+                    </div>
+                    <div class="poet_listen_pods" style="text-align: center;">
+                        <a href="/podcasts/<?= slugify($recent->title, $recent->id) ?>" style="display: flex;align-items:center">
+                            <p>
+                                LISTEN PODS
+                            </p>
+                            <div class="play">
+                                <img src="/images/play3.svg" alt="listen podcast">
+                            </div>
+                        </a>
+                    </div>
+                </div>
             </div>
-            <div class="poetdetails">
-                <div class="poettitle">
-                    <h4> <?= $recent->title; ?>
-                        <br> [Podcast : <?= formatDuration($recent->duration) ?>]
-                    </h4>
-                </div>
-                <div class="poetsubtitle">
-                    <h6><?= nDate($recent->podcast_date) ?></h6>
-                </div>
-                <div class="podpoetinfo">
-                    <p><?= str_limit($recent->shortdesc, 200) ?></p>
-                </div>
-                <div class="poet_listen_pods" style="text-align: center;">
-                    <a href="/podcasts/<?= slugify($recent->title, $recent->id) ?>" style="display: flex;align-items:center">
-                        <p>
-                            LISTEN PODS
-                        </p>
-                        <div class="play">
-                            <img src="/images/play3.svg" alt="listen podcast">
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
         <?php endforeach; ?>
     </div>
 </div>

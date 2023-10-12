@@ -16,7 +16,7 @@ include_once base_path('routes/blogs.php');
 include_once base_path('routes/podcasts.php');
 include_once base_path('routes/artists.php');
 
-Route::get('/', base_path('index.php'));
+Route::get('/', base_path('home.php'));
 Route::get('/admin', base_path('adminadmin/dashboard.php'));
 
 $url = explode('?', $_SERVER['REQUEST_URI'])[0];
