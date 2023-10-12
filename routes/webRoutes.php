@@ -1,5 +1,45 @@
 <?php
 
+Route::get('/uploads/{file}', function($file) {
+    $static = base_path('uploads/' . $file);
+    if (file_exists($static) && !is_dir($static)) {
+        $extension = pathinfo($static, PATHINFO_EXTENSION);
+        $content_types = [
+            'html' => 'text/html',
+            'css' => 'text/css',
+            'js' => 'application/javascript',
+            'png' => 'image/png',
+            "pdf" => "application/pdf",
+            "jpeg" => "image/jpeg",
+            "jpg" => "image/jpeg",
+            "gif" => "image/gif",
+            "xml" => "application/xml",
+            "json" => "application/json",
+            "svg" => "image/svg+xml",
+            "zip" => "application/zip",
+            "mp3" => "audio/mpeg",
+            "mp4" => "video/mp4",
+            "csv" => "text/csv",
+            "woff" => "font/woff",
+            "woff2" => "font/woff",
+            "ttf" => "font/ttf",
+            "otf" => "font/otf",
+            // Add more file extensions and corresponding content types as needed
+        ];
+
+        // Set content type if the extension is recognized, otherwise use a default type
+        if (isset($content_types[$extension])) {
+            header('Content-Type: ' . $content_types[$extension]);
+            echo file_get_contents($static);
+            exit;
+        }
+    } else {
+        http_response_code(404);
+        require_once(base_path('404/404.html'));
+        exit;
+    }
+});
+
 Route::get('/home/index', base_path('home/index.php'));
 
 // podcast
