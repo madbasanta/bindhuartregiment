@@ -7,6 +7,7 @@ class QueryBuilder
     private $connection;
     public $table;
     public $whereClause;
+    public $havingClause;
     public $orderClause;
     public $operators = [
         '=', '<', '>', '<=', '>=', '<>', '!='
@@ -47,6 +48,17 @@ class QueryBuilder
     {
         $wheres = mysqli_escape_string($this->connection, $wheres);
         $this->whereClause .= ($this->whereClause ? " $boolean " : "") . "( {$wheres} )";
+        return $this;
+    }
+
+    public function having($column, $operator = null, $value = null, $boolean = 'and') 
+    {
+        [$value, $operator] = $this->prepareValueAndOperator(
+            $value,
+            $operator,
+            func_num_args() === 2
+        );
+        $this->havingClause .= ($this->havingClause ? " {$boolean} " : "") . " {$column} {$operator} '{$value}' ";
         return $this;
     }
 
@@ -128,7 +140,7 @@ class QueryBuilder
     public function get()
     {
         $selectCols = empty($this->columns) ? '*' : implode(',', $this->columns);
-        $sql = "SELECT $selectCols FROM {$this->table}" . ($this->whereClause ? " WHERE {$this->whereClause}" : '') . ($this->orderClause ? " {$this->orderClause}" : '') . (!is_null($this->limit) ? " LIMIT {$this->limit}" : '') . (!is_null($this->offset) ? " OFFSET {$this->offset}" : '');
+        $sql = "SELECT $selectCols FROM {$this->table}" . ($this->whereClause ? " WHERE {$this->whereClause}" : '') . ($this->havingClause ? " HAVING {$this->havingClause} " : '') . ($this->orderClause ? " {$this->orderClause}" : '') . (!is_null($this->limit) ? " LIMIT {$this->limit}" : '') . (!is_null($this->offset) ? " OFFSET {$this->offset}" : '');
         $result = $this->connection->query($sql);
         if (!$result) {
             throw new Exception($this->connection->error);
@@ -145,7 +157,7 @@ class QueryBuilder
     public function first()
     {
         $selectCols = empty($this->columns) ? '*' : implode(',', $this->columns);
-        $sql = "SELECT $selectCols FROM {$this->table}" . ($this->whereClause ? " WHERE {$this->whereClause} " : '') . ($this->orderClause ? " {$this->orderClause}" : '') . " LIMIT 1";
+        $sql = "SELECT $selectCols FROM {$this->table}" . ($this->whereClause ? " WHERE {$this->whereClause} " : '') .($this->havingClause ? " HAVING {$this->havingClause} " : ''). ($this->orderClause ? " {$this->orderClause}" : '') . " LIMIT 1";
         $result = $this->connection->query($sql);
         if (!$result) {
             throw new Exception($this->connection->error);

@@ -19,9 +19,9 @@ include_once base_path('routes/artists.php');
 Route::get('/', base_path('home.php'));
 Route::get('/admin', base_path('adminadmin/dashboard.php'));
 
-$url = explode('?', $_SERVER['REQUEST_URI'])[0];
+$url = urldecode(explode('?', $_SERVER['UNENCODED_URL'] ?? $_SERVER['REQUEST_URI'])[0]);
 foreach(Route::$routes[$_SERVER['REQUEST_METHOD']] as $route => $actions) {
-    $pregRoute = preg_replace('#\{(\w+)\}#', '([a-z-0-9]+)', $route);
+    $pregRoute = preg_replace('#\{(\w+)\}#', '([\D]+)', $route);
     // Check if the request URI matches the route pattern
     if (preg_match("#^$pregRoute$#", $url, $matches)) {
         // Extract any route parameters

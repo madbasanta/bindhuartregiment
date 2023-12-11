@@ -1,5 +1,12 @@
 <?php
+
 $recents = ORM::table('podcasts')->orderBy('created_at', 'desc')->limit(3)->get();
+
+$articles = ORM::table('blog_posts')->select([
+    'blog_posts.*',
+    '(select name from categories where categories.id = blog_posts.category_id) as category_name',
+])->having('category_name', 'Article')->orderBy('created_at', 'desc')->limit(3)->get();
+
 ?>
 <div class="billboard_1">
     <!--  <div class="side_nav">
@@ -64,7 +71,7 @@ $recents = ORM::table('podcasts')->orderBy('created_at', 'desc')->limit(3)->get(
 <br><br>
 
 <div class="" style="max-width: 1185px;margin: 50px auto;">
-    <a href="#articlemain">
+    <a href="/articles">
         <div class="recents">
             <button class="cta">
                 <span class="hover-underline-animation"> ARTICLES </span>
@@ -77,8 +84,31 @@ $recents = ORM::table('podcasts')->orderBy('created_at', 'desc')->limit(3)->get(
     </a>
     <div class="">
 
-
         <div class="grid-container">
+            <?php foreach($articles as $article): ?>
+            <a href="/articles/<?= slugify($article->title, $article->id) ?>" class="grid-item " style="margin-top: 20px;">
+                <div class="collab_1">
+                    <div class="img_pro" style="text-align: left;">
+                        <img src="/uploads/<?= $article->thumbnail ?>" style="max-width: 100%;" 
+                            alt="<?= $article->title ?>" class="collab_1">
+                    </div>
+                    <div class="collab_text_1">
+                        <p class="collab_text_main_1" style="text-align: left;">
+                            <?= $article->title ?>
+                            <br><br>
+                            <span style="font-weight: normal;">
+                                <?= $article->shortdesc ?>
+                                <br>
+                                See more...
+                            </span>
+                        </p>
+                    </div>
+                </div>
+            </a>
+            <?php endforeach; ?>
+        </div>
+
+        <!-- <div class="grid-container">
             <a href="#article1" class="grid-item " style="margin-top: 20px;">
                 <div class="collab_1">
                     <div class="img_pro" style="text-align: left;">
@@ -141,7 +171,7 @@ $recents = ORM::table('podcasts')->orderBy('created_at', 'desc')->limit(3)->get(
                     </div>
                 </div>
             </a>
-        </div>
+        </div> -->
     </div>
 </div>
 

@@ -116,5 +116,20 @@ function strToNumber($str)
 
 function slugify($str, $id = null)
 {
-    return strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', $str), '-')) . ($id ? '-id-' . numberToStr($id) : '');
+    // List of characters to omit or replace
+    $specialCharacters = array(' ', '&', '%', '$', '#', '@', '!', '?', '=', '+', ',', ';', ':', '"', "'", '(', ')', '[', ']', '{', '}', '<', '>', '/', '\\', '|', '^', '~', '`', '*');
+
+    $replacement = '-';
+
+    // Replace or omit special characters
+    $slug = str_replace($specialCharacters, $replacement, $str);
+
+    // Remove consecutive duplicate replacements
+    $slug = preg_replace('/' . preg_quote($replacement, '/') . '{2,}/', $replacement, $slug);
+
+    // Convert to lowercase and trim leading/trailing replacement characters
+    $slug = strtolower(trim($slug, $replacement));
+
+    return $slug . ($id ? '-id-' . numberToStr($id) : '');
+    // return strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', $str), '-')) . ($id ? '-id-' . numberToStr($id) : '');
 }

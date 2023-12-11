@@ -20,14 +20,15 @@ Route::post('/admin/blogs/edit', 'authenticated', function() {
         'thumbnail' => 'required',
     ]);
 
+    
     $blog = ORM::table('blog_posts')->find($_GET['id']);
     if(empty($blog)) {
         http_response_code(404);
         exit;
     }
 
-    $result = ORM::transaction(function() {
-        ORM::table('blog_posts')->where([
+    $result = ORM::transaction(function() use($blog){
+        ORM::table('blog_posts')->where('id', $blog->id)->update([
             'title' => $_POST['title'],
             'content' => $_POST['content'],
             'shortdesc' => $_POST['shortdesc'],

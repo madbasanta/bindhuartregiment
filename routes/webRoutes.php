@@ -73,3 +73,15 @@ Route::get('/about-us', base_path('about/aboutus.php'));
 Route::get('/support-us', base_path('supportus/supportus.php'));
 // event-projects
 Route::get('/event-projects', base_path('projects/projects.php'));
+// articles
+Route::get('/articles', base_path('article/article.php'));
+Route::get('/articles/{slug}', function($slug) {
+    $strId = substr($slug, strrpos($slug, 'id-') + 3);
+    $article = ORM::table('blog_posts')->where('id', strToNumber($strId))->first();
+    if(!$article) {
+        http_response_code(404);
+        require_once(base_path('404/404.html'));
+        exit;
+    }
+    include_once(base_path('article/article-detail.php'));
+});
